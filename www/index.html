@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+    <!--app framework 的csss-->
+    <link type="text/css" rel="stylesheet" href="common/css/main.css"/>
+    <link type="text/css" rel="stylesheet" href="common/css/ios7.css"/>
+    <link type="text/css" rel="stylesheet" href="common/css/icons.css"/>
+    <link type="text/css" rel="stylesheet" href="common/css/fontello.css"/>
+    <link type="text/css" rel="stylesheet" href="common/css/animation.css"/>
+    <link type="text/css" rel="stylesheet" href="common/css/lists.css"/>
+    <link type="text/css" rel="stylesheet" href="common/css/forms.css"/>
+    <link type="text/css" rel="stylesheet" href="common/css/buttons.css"/>
+    <link type="text/css" rel="stylesheet" href="common/plugins/css/af.popup.css"/>
+    <!--共用css-->
+    <link type="text/css" rel="stylesheet" href="common/css/base.css"/>
+    <!--单个页面对应的css-->
+    <link href="login/css/login.css" type="text/css" rel="stylesheet"/>
+    <link href="user/css/user.css" type="text/css" rel="stylesheet">
+    <!--app framework 的js-->
+    <!--<script type="text/javascript" src="common/js/jquery-1.11.1.min.js"></script>
+   <script type="text/javascript" src="common/js/jq.appframework.js"></script>-->
+   <script type="text/javascript" src="common/js/appframework.js"></script>
+    <script type="text/javascript" src="common/js/ui/appframework.ui.js"></script>
+    <script type="text/javascript" src="common/plugins/af.popup.js"></script>
+    <script type="text/javascript" charset="utf-8" src="common/plugins/af.css3animate.js"></script>
+    <script type="text/javascript" charset="utf-8" src="common/plugins/af.scroller.js"></script>
+    <script type="text/javascript" charset="utf-8" src="common/plugins/af.touchEvents.js"></script>
+    <script type="text/javascript" charset="utf-8" src="common/plugins/af.passwordBox.js"></script>
+    <script type="text/javascript" charset="utf-8" src="common/plugins/af.touchLayer.js"></script>
+    <script type="text/javascript" charset="utf-8" src="common/js/ui/transitions/fade.js"></script>
+    <script type="text/javascript" charset="utf-8" src="common/js/ui/transitions/flip.js"></script>
+    <script type="text/javascript" charset="utf-8" src="common/js/ui/transitions/pop.js"></script>
+    <script type="text/javascript" charset="utf-8" src="common/js/ui/transitions/slide.js"></script>
+    <script type="text/javascript" charset="utf-8" src="common/js/ui/transitions/slideDown.js"></script>
+    <script type="text/javascript" charset="utf-8" src="common/js/ui/transitions/slideUp.js"></script>
+    <script type="text/javascript" charset="utf-8" src="common/plugins/af.slidemenu.js"></script>
+
+    <!--apache cordova 当需要使用cordova的任一一个插件都必须因此该js-->
+    <script type="text/javascript" src="cordova.js"></script>
+
+    <!--共用js
+    <script type="text/javascript" src="common/js/jquery.form-validator.js"></script>-->
+    <script type="text/javascript" src="common/js/loadingbtn.js"></script>
+    <script type="text/javascript" src="common/js/form-validator.js"></script>
+    <script type="text/javascript" src="common/js/config.js"></script>
+    <script type="text/javascript" src="common/js/common.js"></script>
+
+    <!--每个页面对应的js-->
+    <script type="text/javascript" src="user/js/user.js"></script>
+    <script type="text/javascript" src="login/js/login.js"></script>
+
+
+
+    <title>香道佳</title>
+</head>
+<body>
+<div id="afui" class="ios7">
+    <div id="content">
+        <!--导入页
+        <div id="leader" class="panel" selected="true"  data-footer="none" data-header="none">
+            <script type="text/javascript">
+               //定时跳转
+               setTimeout(function(){
+                   $.ui.loadContent("#home", false, false, "pop");
+               },1000)
+            </script>
+        </div>-->
+
+        <!--主页-->
+        <div id="home" class="panel" title="主页" selected="true" data-footer="footer-common" data-tab="nav-home">
+        </div>
+
+        <!--分类-->
+        <div id="category" class="panel" title="分类" data-footer="footer-common" data-tab="nav-category">
+            category
+        </div>
+
+        <!--购物车-->
+        <div id="cart" class="panel" title="购物车" data-footer="footer-common" data-tab="nav-cart">
+            cart
+        </div>
+
+        <!--我的账户-->
+        <!--当切换到该页面就会运行userLoad函数-->
+        <div id="user" class="panel" title="我的账户" data-defer="user/html/user.html" data-footer="footer-common"
+             data-tab="nav-count" data-load="userLoad" data-unload="unuserLoad">
+        </div>
+
+        <!--登录-->
+        <div id="login" class="panel" title="登录" data-footer="none" data-defer="login/html/login.html"
+             data-tab="nav-count" data-load="loginLoad"  data-unload="unloginLoad">
+        </div>
+
+        <!--注册-->
+        <div id="register" class="panel" title="注册" data-footer="none" data-defer="login/html/register.html"
+             data-tab="nav-count" data-load="registerLoad" data-unload="unregisterLoad">
+        </div>
+
+
+        <!--底部-->
+        <footer id="footer-common">
+            <a href="#home" id="nav-home" class="icon home">主页</a>
+            <a href="#category" id="nav-category" class="icon category">品类</a>
+            <a href="#" id="nav-cart" class="icon basket">购物车</a>
+            <a href="#" id="nav-count" class="icon user">我的菜园</a>
+        </footer>
+        <!--siderbar-->
+        <nav>
+            <ul class="list">
+                <li>fwer</li>
+                <li>fwer</li>
+            </ul>
+        </nav>
+    </div>
+</div>
+</body>
+</html>

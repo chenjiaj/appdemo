@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+#afui #leader {
+  background: #fbf3be url('../img/leader.jpg') center center no-repeat;
+}
+.category:before {
+  font-family: 'fontello';
+  content: '\e800';
+}
+.panel {
+  font-size: 14px !important;
+}
+.afScrollbar {
+  width: 2px !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+.xdj-tip {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 5px 20px;
+  position: absolute;
+  z-index: 10000;
+  border-radius: 5px;
+  bottom: 100px;
+  box-sizing: border-box;
+  left: 50%;
+  box-shadow: 0 3px 3px #ccc;
+  font-size: 14px;
+}
+#afui.ios7 header .button:hover,
+#afui.ios7 header .button:focus {
+  background-color: #ccc !important;
+}
+#afui.ios7 header #backButton {
+  left: 0;
+  width: 70px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-left: 25px !important;
+  padding-right: 10px !important;
+}
+#afui.ios7 header #backButton:before {
+  left: 10px;
+}
+#afui.ios7 .disabled {
+  color: #ccc !important;
+}
+#afui.ios7 .input-error {
+  border: 1px solid red;
+}
+#afui.ios7 .hide {
+  display: none;
+}
+#afui.ios7 .bigbutton {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+#afui.ios7 .footer {
+  position: static;
+}
+.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+.alert {
+  padding: px;
+  margin-bottom: 10px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}

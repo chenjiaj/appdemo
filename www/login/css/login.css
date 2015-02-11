@@ -1,0 +1,17 @@
+#login #loginForm {
+  margin-top: 10px;
+}
+#login .other-info {
+  margin-top: 10px;
+  padding: 0 10px;
+}
+#login .other-info a {
+  color: #aaa;
+}
+#login .other-info a:hover,
+#login .other-info a:focus {
+  color: #529bea;
+}
+#register #registerForm {
+  margin-top: 10px;
+}

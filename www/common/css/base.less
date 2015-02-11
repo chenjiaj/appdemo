@@ -1,0 +1,97 @@
+//reset.css
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+
+//导航页图片
+#afui #leader{
+    background: #FBF3BE url('../img/leader.jpg') center center no-repeat;
+}
+
+//自定义图标
+.category:before{
+    font-family:'fontello';
+    content: '\e800';
+}
+
+//设置默认字体大小
+.panel{
+    font-size: 14px !important;
+}
+
+//定义导航条样式
+.afScrollbar{
+    width: 2px !important;
+    background-color: rgba(0,0,0,0.3) !important;
+}
+
+@tipZindex:10000;
+//tip样式
+.xdj-tip{
+    background-color: rgba(0,0,0,0.2);
+    padding: 5px 20px;
+    position: absolute;
+    z-index:@tipZindex;
+    border-radius: 5px;
+    bottom:100px;
+    box-sizing:border-box;
+    left:50%;
+    box-shadow: 0 3px 3px #ccc;
+    font-size: 14px;
+}
+
+#afui{
+    &.ios7{
+        header{
+              .button{
+                  &:hover,&:focus{
+                      background-color: #ccc !important;
+                  }
+              }
+              #backButton{
+                  left: 0;
+                  width: 70px;
+                  white-space: nowrap;
+                  text-overflow:ellipsis;
+                  overflow: hidden;
+                  padding-left: 25px !important;
+                  padding-right: 10px !important;
+                  &:before{
+                      left: 10px;
+                  }
+              }
+          }
+        .disabled{
+            color:#ccc !important;
+        }
+        .input-error{
+            border:1px solid red;
+        }
+        .hide{
+            display: none;
+        }
+        .bigbutton{
+            width:100%;
+            margin:0 auto;
+            border-radius: 5px;
+        }
+        .footer{
+            position: static;
+        }
+    }//ios7 end
+}//afui end
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+.alert {
+    padding: px;
+    margin-bottom: 10px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}

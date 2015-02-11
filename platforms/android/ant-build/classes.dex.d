@@ -1,0 +1,26 @@
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes.dex : \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\dev\xiangdaojia\cn\BuildConfig.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\dev\xiangdaojia\cn\CordovaApp.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\dev\xiangdaojia\cn\R$attr.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\dev\xiangdaojia\cn\R$drawable.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\dev\xiangdaojia\cn\R$string.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\dev\xiangdaojia\cn\R$xml.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\dev\xiangdaojia\cn\R.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\dev\xiangdaojia\com\BuildConfig.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\dev\xiangdaojia\com\CordovaApp.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\dev\xiangdaojia\com\R$attr.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\dev\xiangdaojia\com\R$drawable.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\dev\xiangdaojia\com\R$string.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\dev\xiangdaojia\com\R$xml.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\dev\xiangdaojia\com\R.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\io\cordova\hellocordova\BuildConfig.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\io\cordova\hellocordova\CordovaApp.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\io\cordova\hellocordova\R$attr.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\io\cordova\hellocordova\R$drawable.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\io\cordova\hellocordova\R$string.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\io\cordova\hellocordova\R$xml.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\io\cordova\hellocordova\R.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\org\apache\cordova\device\Device.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\org\apache\cordova\networkinformation\NetworkManager$1.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\classes\org\apache\cordova\networkinformation\NetworkManager.class \
+e:\cjj\xiangdaojia-app\platforms\android\ant-build\dexedLibs\classes-6ecb6b7c332500c553ff7f2d5dcb5470.jar \
