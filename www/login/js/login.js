@@ -93,7 +93,7 @@ function registerLoad(){
                                 url:XDJURL.$registerUrl,
                                 data:_this.$form.serialize(),
                                 error:function(e){
-                                    BTN.removeLoading($("#loginBtn"),'注册');
+                                    BTN.removeLoading(_this.$reBtn,'注册');
                                     alert("请求失败，请检查网络连接！");
                                 }
                             });

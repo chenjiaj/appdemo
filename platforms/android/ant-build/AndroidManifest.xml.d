@@ -1,2 +1,2 @@
-f:\xiangdaojiafile\code\xiangdaojia-app\platforms\android\ant-build\AndroidManifest.xml : \
-f:\xiangdaojiafile\code\xiangdaojia-app\platforms\android\AndroidManifest.xml \
+e:\cjj\appdemo\platforms\android\ant-build\AndroidManifest.xml : \
+e:\cjj\appdemo\platforms\android\AndroidManifest.xml \
