@@ -8,8 +8,15 @@
 
 function userLoad(){
     var loginStorage = XDJ.loginStorage;
-    var tocken = loginStorage.checkTocken();
     localStorage.currentPage = '#user';
+    var tocken = loginStorage.checkTocken();
+    if(tocken){
+        $("#user .username").html(localStorage.username);
+        $(".exit").show();
+    }else{
+        $("#user .username").html('<a href="#login">登录</a>');
+        $(".exit").hide();
+    }
 
     $('.exit').bind("click",function(){
         loginStorage.exitLogin();

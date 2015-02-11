@@ -42,19 +42,6 @@
                 $.ui.ready(function(){ //设置app framework 默认ui样式
                     $("#afui").get(0).className='ios7';
                 }); //设置属于那种风格
-
-                $("#nav-cart").click(function(e){
-                    e.preventDefault();
-                    if(loginStorage.checkTocken()){
-                        $.ui.loadContent("#cart", false, false, "up");
-                    }
-                });
-                $("#nav-count").click(function(e){
-                    e.preventDefault();
-                    if(loginStorage.checkTocken()){
-                        $.ui.loadContent("#user", false, false, "up");
-                    }
-                });
             }
         };
         app.init();
@@ -86,8 +73,10 @@
                     return this.$tocken;
                 }else if(this.$password && this.$username){
                     this.login();
+              //  }else{
+                //    this.returnLoginPage();
                 }else{
-                    this.returnLoginPage();
+                    return false;
                 }
             },
             returnLoginPage:function(){//回到登录页面

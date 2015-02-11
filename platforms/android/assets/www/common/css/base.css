@@ -31,8 +31,7 @@ a {
   box-shadow: 0 3px 3px #ccc;
   font-size: 14px;
 }
-#afui.ios7 header .button:hover,
-#afui.ios7 header .button:focus {
+#afui.ios7 header .button:active {
   background-color: #ccc !important;
 }
 #afui.ios7 header #backButton {
@@ -60,9 +59,6 @@ a {
   width: 100%;
   margin: 0 auto;
   border-radius: 5px;
-}
-#afui.ios7 .footer {
-  position: static;
 }
 .alert-danger {
   color: #a94442;

@@ -28,10 +28,6 @@ function loginLoad(){
     var username = localStorage.username;
     if(username){
         $("#loginForm").find('#username').val(localStorage.username);
-        console.log(localStorage.username);
-        console.log(username);
-        console.log($("#loginForm").find('#username').val());
-        console.log($("#loginForm").find('#username'));
     }
 }
 

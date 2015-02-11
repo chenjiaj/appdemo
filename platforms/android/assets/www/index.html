@@ -53,7 +53,7 @@
     <!--每个页面对应的js-->
     <script type="text/javascript" src="user/js/user.js"></script>
     <script type="text/javascript" src="login/js/login.js"></script>
-
+    <script type="text/javascript" src="home/js/home.js"></script>
 
 
     <title>香道佳</title>
@@ -72,12 +72,14 @@
         </div>-->
 
         <!--主页-->
-        <div id="home" class="panel" title="主页" selected="true" data-footer="footer-common" data-tab="nav-home">
+        <div id="home" class="panel" title="主页" selected="true" data-footer="footer-common" data-tab="nav-home"
+             data-load="homeLoad" data-unload="unhomeLoad">
         </div>
 
         <!--分类-->
-        <div id="category" class="panel" title="分类" data-footer="footer-common" data-tab="nav-category">
-            category
+        <div id="category" class="panel" title="分类" data-footer="footer-common" data-tab="nav-category"
+                data-defer="category/html/list.html">
+
         </div>
 
         <!--购物车-->
@@ -88,17 +90,17 @@
         <!--我的账户-->
         <!--当切换到该页面就会运行userLoad函数-->
         <div id="user" class="panel" title="我的账户" data-defer="user/html/user.html" data-footer="footer-common"
-             data-tab="nav-count" data-load="userLoad" data-unload="unuserLoad">
+             data-tab="nav-user" data-load="userLoad" data-unload="unuserLoad">
         </div>
 
         <!--登录-->
         <div id="login" class="panel" title="登录" data-footer="none" data-defer="login/html/login.html"
-             data-tab="nav-count" data-load="loginLoad"  data-unload="unloginLoad">
+             data-tab="nav-user" data-load="loginLoad"  data-unload="unloginLoad">
         </div>
 
         <!--注册-->
         <div id="register" class="panel" title="注册" data-footer="none" data-defer="login/html/register.html"
-             data-tab="nav-count" data-load="registerLoad" data-unload="unregisterLoad">
+             data-tab="nav-user" data-load="registerLoad" data-unload="unregisterLoad">
         </div>
 
 
@@ -106,8 +108,8 @@
         <footer id="footer-common">
             <a href="#home" id="nav-home" class="icon home">主页</a>
             <a href="#category" id="nav-category" class="icon category">品类</a>
-            <a href="#" id="nav-cart" class="icon basket">购物车</a>
-            <a href="#" id="nav-count" class="icon user">我的菜园</a>
+            <a href="#cart" id="nav-cart" class="icon basket">购物车</a>
+            <a href="#user" id="nav-user" class="icon user">我的菜园</a>
         </footer>
         <!--siderbar-->
         <nav>
