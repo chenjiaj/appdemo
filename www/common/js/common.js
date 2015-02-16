@@ -140,7 +140,6 @@
                         }
 
                     });
-                _this.$password = localStorage.password;
             },
             submitLogin:function(){
                 var username = $("#loginForm").find('#username').val();

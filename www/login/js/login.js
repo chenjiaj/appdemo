@@ -22,7 +22,9 @@ function loginLoad(){
     });
 
     loginBtn.bind("click",function(){
-         loginStorage.submitLogin();
+        if(!loginBtn.hasClass('disabled')){
+            loginStorage.submitLogin();
+        }
     });
 
     var username = localStorage.username;
