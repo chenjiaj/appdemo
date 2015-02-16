@@ -23,7 +23,6 @@ function homeLoad(){
             if(_this.tocken){
 
             }else{
-                alert("没有");
                 COM.loginStorage.returnLoginPage();
             }
         },

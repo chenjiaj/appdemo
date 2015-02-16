@@ -138,6 +138,7 @@ var COM = {};//定义全局变量，为一些对象提供外部接口
                             });
                         }
                     }
+
                 });
             },
             submitLogin:function(){
