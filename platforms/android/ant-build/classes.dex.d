@@ -1,4 +1,11 @@
 e:\cjj\appdemo\platforms\android\ant-build\classes.dex : \
+e:\cjj\appdemo\platforms\android\ant-build\classes\dev\warnmonitor\cn\BuildConfig.class \
+e:\cjj\appdemo\platforms\android\ant-build\classes\dev\warnmonitor\cn\CordovaApp.class \
+e:\cjj\appdemo\platforms\android\ant-build\classes\dev\warnmonitor\cn\R$attr.class \
+e:\cjj\appdemo\platforms\android\ant-build\classes\dev\warnmonitor\cn\R$drawable.class \
+e:\cjj\appdemo\platforms\android\ant-build\classes\dev\warnmonitor\cn\R$string.class \
+e:\cjj\appdemo\platforms\android\ant-build\classes\dev\warnmonitor\cn\R$xml.class \
+e:\cjj\appdemo\platforms\android\ant-build\classes\dev\warnmonitor\cn\R.class \
 e:\cjj\appdemo\platforms\android\ant-build\classes\dev\xiangdaojia\cn\BuildConfig.class \
 e:\cjj\appdemo\platforms\android\ant-build\classes\dev\xiangdaojia\cn\CordovaApp.class \
 e:\cjj\appdemo\platforms\android\ant-build\classes\dev\xiangdaojia\cn\R$attr.class \

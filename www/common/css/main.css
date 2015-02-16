@@ -159,7 +159,8 @@ body {
     text-align:center;
     height:44px;
     font-size:18px;
-    font-weight:bold;
+    font-weight: normal;
+    letter-spacing: 2px;
     left:27.5%;
     color:inherit;
     padding:10px 0;
@@ -275,7 +276,7 @@ body {
     position:absolute;
     top:2px;
     left:0;
-    font-size: 25px;
+    font-size: 22px;
     margin:auto;
     width: 100%;
 }
