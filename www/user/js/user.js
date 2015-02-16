@@ -7,7 +7,7 @@
  */
 
 function userLoad(){
-    var loginStorage = XDJ.loginStorage;
+    var loginStorage = COM.loginStorage;
     localStorage.currentPage = '#user';
     var tocken = loginStorage.checkTocken();
     if(tocken){

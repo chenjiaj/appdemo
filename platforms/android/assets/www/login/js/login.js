@@ -6,7 +6,7 @@
  * Time: 下午3:52
  */
 function loginLoad(){
-    var loginStorage = XDJ.loginStorage;
+    var loginStorage = COM.loginStorage;
     var loginBtn = $('#loginBtn');
     var form = $("#loginForm");
     var validate = new FormValidator(form);
@@ -72,7 +72,7 @@ function registerLoad(){
         },
         submitForm:function(){
             var _this = this;
-                XDJ.sendXHR(function(){
+                COM.sendXHR(function(){
                     if(_this.checkForm()){
                         if(!BTN.isLoading(_this.$reBtn) || BTN.isLoading(_this.$reBtn) == 'false'){
                             BTN.addLoading(_this.$reBtn,'注册中','loading');
