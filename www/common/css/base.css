@@ -58,7 +58,11 @@ a {
   font-size: 14px;
 }
 #afui.ios7 header .button:active {
-  background-color: #ccc !important;
+  background-color: #227fce !important;
+}
+#afui.ios7 header .user:before {
+  top: 0;
+  font-size: 1.3em;
 }
 #afui.ios7 header #backButton {
   left: 0;

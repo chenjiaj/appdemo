@@ -5,9 +5,9 @@
 * 1.设置app framework 默认ui样式
 * 2.loginStorage请求用户信息时需要调用的接口
 * 3.注册网络监测，当连接网络和断开网络是需要调用的函数
-* 4.XDJ.sendXHR  请求封装，请求前检查网络是否连接
+* 4.COM.sendXHR  请求封装，请求前检查网络是否连接
   例如：
-     XDJ.sendXHR(function(){
+     COM.sendXHR(function(){
      $.post('http://'+XDJURL.$domainsName+'/login/index',data,function(res){
      .....
      },'json');
@@ -22,7 +22,7 @@
 * 8.tip() 弹出小提示
 *
 * */
- var XDJ = {};//定义全局变量，为一些对象提供外部接口
+ var COM = {};//定义全局变量，为一些对象提供外部接口
 
 (function(){
     $(function(){
@@ -49,12 +49,12 @@
         /**
          * loginStorage请求用户信息时需要调用的接口
          * 登录模块、需要用户信息请求模块
-         * 当请求需要用户信息时调用，此对象，此对象提供外部接口 XDJ.loginStorage
+         * 当请求需要用户信息时调用，此对象，此对象提供外部接口 COM.loginStorage
          * 使用方法：
-         * 1.var tocken = XDJ.loginStorage.checkTocken();//获取tocken
+         * 1.var tocken = COM.loginStorage.checkTocken();//获取tocken
          * 2.localStorage.currentPage = '#user';//设置当前pannel的ID,若跳转值登录页后可以跳转回来,若不提供则默认goback()
          * 3.退出账号，调用XDJ.loginStorage.exitLogin()函数
-         * 4.进入登录页登录时，为登录按钮绑定 XDJ.loginStorage.submitLogin()函数
+         * 4.进入登录页登录时，为登录按钮绑定 COM.loginStorage.submitLogin()函数
          * **/
         var loginStorage = {
             $tocken:localStorage.tocken,
@@ -73,8 +73,6 @@
                     return this.$tocken;
                 }else if(this.$password && this.$username){
                     this.login();
-              //  }else{
-                //    this.returnLoginPage();
                 }else{
                     return false;
                 }
@@ -98,7 +96,7 @@
             login:function(){
                 var _this = this;
                 var data = _this.getRequestData();
-                    XDJ.sendXHR(function(){
+                    COM.sendXHR(function(){
                         var loginBtn  = $("#loginBtn");
                         if(!loginBtn.hasClass('disabled')){
                             if(!BTN.isLoading(loginBtn) || BTN.isLoading(loginBtn) == 'false'){
@@ -116,7 +114,7 @@
                                                     //_this.$tocken = tocken;
                                                     localStorage.tocken = tocken;
                                                     _this.$tocken = tocken;
-                                                    localStorage.password = _this.password;
+                                                    localStorage.password = _this.$password;
                                                 }
                                                 if(localStorage.currentPage){//需要在请求用户接口保存当页信息
                                                     $.ui.loadContent(localStorage.currentPage, false, false, "up");
@@ -126,7 +124,8 @@
                                             }
                                         }else{
                                             alert("用户名或密码错误");
-                                            _this.returnLoginPage();
+                                            $.ui.loadContent(localStorage.currentPage, false, false, "up");
+                                            //_this.returnLoginPage();
                                         }
                                     },
                                     url:XDJURL.$loginUrl,
@@ -140,7 +139,6 @@
                         }
 
                     });
-                _this.$password = localStorage.password;
             },
             submitLogin:function(){
                 var username = $("#loginForm").find('#username').val();
@@ -165,15 +163,15 @@
 
         loginStorage.init();//页面加载时调用，检查是否支持本地存储
 
-        XDJ.loginStorage = loginStorage;//XDJ.loginStorage是loginStorage的外部接口
+        COM.loginStorage = loginStorage;//COM.loginStorage是loginStorage的外部接口
 
 
         /**
          * 请求封装，请求前检查网络是否连接
          * **/
-        XDJ.sendXHR=function(fun){
-            if(XDJ.isOnline){
-              fun();
+        COM.sendXHR=function(fun){
+            if(COM.isOnline){
+                fun();
             }else{
                 alert("网络连接失败，请查看网络配置！");
             }
@@ -187,15 +185,15 @@
 
         function onOffline() {
             alert("网络连接失败，请查看网络配置！");
-            XDJ.isOnline = false;
+            COM.isOnline = false;
         }
         document.addEventListener("online", onOnline, false);
 
         function onOnline() {
-            if( XDJ.isOnline === false){
+            if( COM.isOnline === false){
                 tip('网络已经连接');
             }
-            XDJ.isOnline = true;
+            COM.isOnline = true;
         }
         /*
          function checkConnection() {

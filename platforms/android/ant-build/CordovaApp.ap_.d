@@ -114,6 +114,10 @@ e:\cjj\appdemo\platforms\android\assets\www\home\html \
 e:\cjj\appdemo\platforms\android\assets\www\home\js \
 e:\cjj\appdemo\platforms\android\assets\www\home\html\home.html \
 e:\cjj\appdemo\platforms\android\assets\www\home\js\home.js \
+e:\cjj\appdemo\platforms\android\assets\www\item\css \
+e:\cjj\appdemo\platforms\android\assets\www\item\html \
+e:\cjj\appdemo\platforms\android\assets\www\item\js \
+e:\cjj\appdemo\platforms\android\assets\www\item\html\item.html \
 e:\cjj\appdemo\platforms\android\assets\www\login\css \
 e:\cjj\appdemo\platforms\android\assets\www\login\html \
 e:\cjj\appdemo\platforms\android\assets\www\login\js \

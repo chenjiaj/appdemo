@@ -11,7 +11,9 @@ function loginLoad(){
     var form = $("#loginForm");
     var validate = new FormValidator(form);
 
-    loginBtn.addClass('disabled');
+    if(validate.checkall() !== true){
+        loginBtn.addClass('disabled');
+    }
 
     $("input").bind('keyup',function(){
         if(validate.checkall() === true){
@@ -22,7 +24,9 @@ function loginLoad(){
     });
 
     loginBtn.bind("click",function(){
-         loginStorage.submitLogin();
+        if(!loginBtn.hasClass('disabled')){
+            loginStorage.submitLogin();
+        }
     });
 
     var username = localStorage.username;

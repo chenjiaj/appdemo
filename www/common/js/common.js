@@ -73,8 +73,6 @@
                     return this.$tocken;
                 }else if(this.$password && this.$username){
                     this.login();
-              //  }else{
-                //    this.returnLoginPage();
                 }else{
                     return false;
                 }
@@ -116,7 +114,7 @@
                                                     //_this.$tocken = tocken;
                                                     localStorage.tocken = tocken;
                                                     _this.$tocken = tocken;
-                                                    localStorage.password = _this.password;
+                                                    localStorage.password = _this.$password;
                                                 }
                                                 if(localStorage.currentPage){//需要在请求用户接口保存当页信息
                                                     $.ui.loadContent(localStorage.currentPage, false, false, "up");
@@ -140,7 +138,6 @@
                         }
 
                     });
-                _this.$password = localStorage.password;
             },
             submitLogin:function(){
                 var username = $("#loginForm").find('#username').val();
@@ -173,7 +170,7 @@
          * **/
         COM.sendXHR=function(fun){
             if(COM.isOnline){
-              fun();
+                fun();
             }else{
                 alert("网络连接失败，请查看网络配置！");
             }

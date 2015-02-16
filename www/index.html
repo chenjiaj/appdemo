@@ -78,12 +78,13 @@
 
         <!--报警信息-->
         <div id="warn" class="panel" title="报警信息" data-footer="footer-common" data-tab="nav-category"
-                data-defer="warn/html/warn.html">
+             data-defer="warn/html/warn.html">
         </div>
 
         <!--我的项目-->
-        <div id="item" class="panel" title="我的项目" data-footer="footer-common" data-tab="nav-cart">
-            我的项目
+        <div id="item" class="panel" title="我的项目" data-footer="footer-common" data-tab="nav-cart"
+             data-defer="item/html/item.html">
+
         </div>
 
         <!--更多-->
@@ -102,6 +103,10 @@
              data-tab="nav-user" data-load="registerLoad" data-unload="unregisterLoad">
         </div>
 
+        <!--个人信息-->
+        <div id="user" class="panel" title="个人信息" data-footer="none" data-defer="user/html/user.html"
+             data-tab="nav-user" data-load="loginLoad"  data-unload="unloginLoad">
+        </div>
 
         <!--底部-->
         <footer id="footer-common">

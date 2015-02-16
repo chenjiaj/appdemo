@@ -7,8 +7,8 @@
  */
 
 function userLoad(){
-    var loginStorage = XDJ.loginStorage;
-    localStorage.currentPage = '#user';
+    var loginStorage = COM.loginStorage;
+    loginStorage.currentPage = '#user';
     var tocken = loginStorage.checkTocken();
     if(tocken){
         $("#user .username").html(localStorage.username);

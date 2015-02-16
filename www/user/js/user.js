@@ -8,7 +8,7 @@
 
 function userLoad(){
     var loginStorage = COM.loginStorage;
-    localStorage.currentPage = '#user';
+    loginStorage.currentPage = '#user';
     var tocken = loginStorage.checkTocken();
     if(tocken){
         $("#user .username").html(localStorage.username);

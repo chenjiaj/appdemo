@@ -7,10 +7,31 @@
  */
 var index = null;
 function homeLoad(){
-    var tocken = loginStorage.checkTocken();
-    index = 0;
-    document.addEventListener("backbutton", onBackKeyDown, false);//注册返回事件
+    var homeLoad = {
+        init:function(){
+            index = 0;
+            this.bindEvent();
+            this.renderPage();
+            localStorage.currentPage = '#home';
+        },
+        bindEvent:function(){
+            document.addEventListener("backbutton", onBackKeyDown, false);//注册返回事件
+        },
+        getRenderData:function(){
+            var _this= this;
+            _this.tocken = COM.loginStorage.checkTocken();
+            if(_this.tocken){
 
+            }else{
+                alert("没有");
+                COM.loginStorage.returnLoginPage();
+            }
+        },
+        renderPage:function(){
+            this.getRenderData();
+        }
+    };
+    homeLoad.init();
 }
 
 function onBackKeyDown(){//连续点击返回键，退出香道佳系统
