@@ -7,6 +7,7 @@
  */
 var index = null;
 function homeLoad(){
+
     index = 0;
     document.addEventListener("backbutton", onBackKeyDown, false);//注册返回事件
 

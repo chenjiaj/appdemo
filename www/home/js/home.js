@@ -7,6 +7,7 @@
  */
 var index = null;
 function homeLoad(){
+    var tocken = loginStorage.checkTocken();
     index = 0;
     document.addEventListener("backbutton", onBackKeyDown, false);//注册返回事件
 

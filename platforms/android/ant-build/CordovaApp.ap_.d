@@ -28,9 +28,12 @@ e:\cjj\appdemo\platforms\android\assets\www\cordova.js \
 e:\cjj\appdemo\platforms\android\assets\www\cordova_plugins.js \
 e:\cjj\appdemo\platforms\android\assets\www\home \
 e:\cjj\appdemo\platforms\android\assets\www\index.html \
+e:\cjj\appdemo\platforms\android\assets\www\item \
 e:\cjj\appdemo\platforms\android\assets\www\login \
+e:\cjj\appdemo\platforms\android\assets\www\more \
 e:\cjj\appdemo\platforms\android\assets\www\plugins \
 e:\cjj\appdemo\platforms\android\assets\www\user \
+e:\cjj\appdemo\platforms\android\assets\www\warn \
 e:\cjj\appdemo\platforms\android\assets\www\category\css \
 e:\cjj\appdemo\platforms\android\assets\www\category\html \
 e:\cjj\appdemo\platforms\android\assets\www\category\js \
@@ -106,7 +109,10 @@ e:\cjj\appdemo\platforms\android\assets\www\common\plugins\css\af.popup.css \
 e:\cjj\appdemo\platforms\android\assets\www\common\plugins\css\af.scroller.css \
 e:\cjj\appdemo\platforms\android\assets\www\common\plugins\css\af.selectBox.css \
 e:\cjj\appdemo\platforms\android\assets\www\common\plugins\css\tabs.css \
+e:\cjj\appdemo\platforms\android\assets\www\home\css \
+e:\cjj\appdemo\platforms\android\assets\www\home\html \
 e:\cjj\appdemo\platforms\android\assets\www\home\js \
+e:\cjj\appdemo\platforms\android\assets\www\home\html\home.html \
 e:\cjj\appdemo\platforms\android\assets\www\home\js\home.js \
 e:\cjj\appdemo\platforms\android\assets\www\login\css \
 e:\cjj\appdemo\platforms\android\assets\www\login\html \
@@ -116,6 +122,9 @@ e:\cjj\appdemo\platforms\android\assets\www\login\css\login.less \
 e:\cjj\appdemo\platforms\android\assets\www\login\html\login.html \
 e:\cjj\appdemo\platforms\android\assets\www\login\html\register.html \
 e:\cjj\appdemo\platforms\android\assets\www\login\js\login.js \
+e:\cjj\appdemo\platforms\android\assets\www\more\css \
+e:\cjj\appdemo\platforms\android\assets\www\more\html \
+e:\cjj\appdemo\platforms\android\assets\www\more\html\more.html \
 e:\cjj\appdemo\platforms\android\assets\www\plugins\org.apache.cordova.device \
 e:\cjj\appdemo\platforms\android\assets\www\plugins\org.apache.cordova.network-information \
 e:\cjj\appdemo\platforms\android\assets\www\plugins\org.apache.cordova.device\www \
@@ -133,4 +142,8 @@ e:\cjj\appdemo\platforms\android\assets\www\user\html\user.html \
 e:\cjj\appdemo\platforms\android\assets\www\user\img\banner.jpg \
 e:\cjj\appdemo\platforms\android\assets\www\user\img\photo.jpg \
 e:\cjj\appdemo\platforms\android\assets\www\user\js\user.js \
+e:\cjj\appdemo\platforms\android\assets\www\warn\css \
+e:\cjj\appdemo\platforms\android\assets\www\warn\html \
+e:\cjj\appdemo\platforms\android\assets\www\warn\js \
+e:\cjj\appdemo\platforms\android\assets\www\warn\html\warn.html \
 e:\cjj\appdemo\platforms\android\ant-build\AndroidManifest.xml \

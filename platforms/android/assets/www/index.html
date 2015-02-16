@@ -73,23 +73,22 @@
 
         <!--主页-->
         <div id="home" class="panel" title="主页" selected="true" data-footer="footer-common" data-tab="nav-home"
-             data-load="homeLoad" data-unload="unhomeLoad">
+             data-load="homeLoad" data-unload="unhomeLoad" data-defer="home/html/home.html">
         </div>
 
-        <!--分类-->
-        <div id="category" class="panel" title="分类" data-footer="footer-common" data-tab="nav-category"
-                data-defer="category/html/list.html">
-
+        <!--报警信息-->
+        <div id="warn" class="panel" title="报警信息" data-footer="footer-common" data-tab="nav-category"
+                data-defer="warn/html/warn.html">
         </div>
 
-        <!--购物车-->
-        <div id="cart" class="panel" title="购物车" data-footer="footer-common" data-tab="nav-cart">
-            cart
+        <!--我的项目-->
+        <div id="item" class="panel" title="我的项目" data-footer="footer-common" data-tab="nav-cart">
+            我的项目
         </div>
 
-        <!--我的账户-->
+        <!--更多-->
         <!--当切换到该页面就会运行userLoad函数-->
-        <div id="user" class="panel" title="我的账户" data-defer="user/html/user.html" data-footer="footer-common"
+        <div id="more" class="panel" title="更多" data-defer="more/html/more.html" data-footer="footer-common"
              data-tab="nav-user" data-load="userLoad" data-unload="unuserLoad">
         </div>
 
@@ -107,9 +106,9 @@
         <!--底部-->
         <footer id="footer-common">
             <a href="#home" id="nav-home" class="icon icon-home-outline">主页</a>
-            <a href="#category" id="nav-category" class="icon icon-info-circled-alt">报警信息</a>
-            <a href="#cart" id="nav-cart" class="icon icon-th-thumb-empty">我的项目</a>
-            <a href="#user" id="nav-user" class="icon icon-menu">更多</a>
+            <a href="#warn" id="nav-category" class="icon icon-info-circled-alt">报警信息</a>
+            <a href="#item" id="nav-cart" class="icon icon-th-thumb-empty">我的项目</a>
+            <a href="#more" id="nav-user" class="icon icon-menu">更多</a>
         </footer>
         <!--siderbar-->
         <nav>

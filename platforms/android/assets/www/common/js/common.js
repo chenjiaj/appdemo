@@ -18,7 +18,7 @@
          })
     实现  window.confirm = function(msg,done,cancel){...}
     需要传递显示的信息 点击确定调用的函数
-* 7.showLoading（）加载旋转
+* 7.showLoading()加载旋转
 * 8.tip() 弹出小提示
 *
 * */
