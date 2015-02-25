@@ -22,8 +22,6 @@ function homeLoad(){
             _this.tocken = COM.loginStorage.checkTocken();
             if(_this.tocken){
 
-            }else{
-                COM.loginStorage.returnLoginPage();
             }
         },
         renderPage:function(){

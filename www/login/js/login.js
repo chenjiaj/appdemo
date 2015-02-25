@@ -94,7 +94,7 @@ function registerLoad(){
                                         alert(res.msg);
                                     }
                                 },
-                                url:XDJURL.$registerUrl,
+                                url:AJAXURL.$registerUrl,
                                 data:_this.$form.serialize(),
                                 error:function(e){
                                     BTN.removeLoading(_this.$reBtn,'注册');

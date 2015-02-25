@@ -7,7 +7,8 @@
  * 域名配置文件
  * */
 var domainsName='open.iot.10086.cn';
-var XDJURL = {
+var AJAXURL = {
     $registerUrl:'http://'+domainsName+'/register/index',
-    $loginUrl:'http://'+domainsName+'/login/index'
+    $loginUrl:'http://'+domainsName+'/login/index',
+    $myItemList:'http://plugins.cordova.io/_view/updated?descending=true&limit=10&include_docs=false'
 }

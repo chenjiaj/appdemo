@@ -8,7 +8,7 @@
  * 4.COM.sendXHR  请求封装，请求前检查网络是否连接
  例如：
  COM.sendXHR(function(){
- $.post('http://'+XDJURL.$domainsName+'/login/index',data,function(res){
+ $.ajax('http://'+XDJURL.$domainsName+'/login/index',data,function(res){
  .....
  },'json');
  });
@@ -22,7 +22,9 @@
  * 8.tip() 弹出小提示
  *
  * */
-var COM = {};//定义全局变量，为一些对象提供外部接口
+var COM = {
+    isOnline:true
+};//定义全局变量，为一些对象提供外部接口
 
 (function(){
     $(function(){
@@ -73,10 +75,8 @@ var COM = {};//定义全局变量，为一些对象提供外部接口
                     return this.$tocken;
                 }else if(this.$password && this.$username){
                     this.login();
-                    //  }else{
-                    //    this.returnLoginPage();
                 }else{
-                    return false;
+                    this.returnLoginPage();
                 }
             },
             returnLoginPage:function(){//回到登录页面
@@ -129,7 +129,7 @@ var COM = {};//定义全局变量，为一些对象提供外部接口
                                         _this.returnLoginPage();
                                     }
                                 },
-                                url:XDJURL.$loginUrl,
+                                url:AJAXURL.$loginUrl,
                                 data:data,
                                 error:function(e){
                                     BTN.removeLoading($("#loginBtn"),'登录');
@@ -233,7 +233,7 @@ var COM = {};//定义全局变量，为一些对象提供外部接口
          * tip的样式在base.less
          * **/
         window.tip = function(text,timer){
-            var div  = $('<div class="COM-tip">'+text+'</div>');
+            var div  = $('<div class="com-tip">'+text+'</div>');
             $("body").append(div);
             div.css({
                 "margin-left":-div.width()/2

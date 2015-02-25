@@ -21,7 +21,6 @@ e:\cjj\appdemo\platforms\android\ant-build\res\drawable-port-mdpi\screen.png \
 e:\cjj\appdemo\platforms\android\ant-build\res\drawable-port-xhdpi\screen.png \
 e:\cjj\appdemo\platforms\android\assets\www \
 e:\cjj\appdemo\platforms\android\assets\_where-is-www.txt \
-e:\cjj\appdemo\platforms\android\assets\www\category \
 e:\cjj\appdemo\platforms\android\assets\www\common \
 e:\cjj\appdemo\platforms\android\assets\www\config.xml \
 e:\cjj\appdemo\platforms\android\assets\www\cordova.js \
@@ -34,10 +33,6 @@ e:\cjj\appdemo\platforms\android\assets\www\more \
 e:\cjj\appdemo\platforms\android\assets\www\plugins \
 e:\cjj\appdemo\platforms\android\assets\www\user \
 e:\cjj\appdemo\platforms\android\assets\www\warn \
-e:\cjj\appdemo\platforms\android\assets\www\category\css \
-e:\cjj\appdemo\platforms\android\assets\www\category\html \
-e:\cjj\appdemo\platforms\android\assets\www\category\js \
-e:\cjj\appdemo\platforms\android\assets\www\category\html\list.html \
 e:\cjj\appdemo\platforms\android\assets\www\common\css \
 e:\cjj\appdemo\platforms\android\assets\www\common\font \
 e:\cjj\appdemo\platforms\android\assets\www\common\img \
@@ -117,7 +112,14 @@ e:\cjj\appdemo\platforms\android\assets\www\home\js\home.js \
 e:\cjj\appdemo\platforms\android\assets\www\item\css \
 e:\cjj\appdemo\platforms\android\assets\www\item\html \
 e:\cjj\appdemo\platforms\android\assets\www\item\js \
+e:\cjj\appdemo\platforms\android\assets\www\item\css\item.css \
+e:\cjj\appdemo\platforms\android\assets\www\item\css\item.less \
+e:\cjj\appdemo\platforms\android\assets\www\item\html\detail.html \
 e:\cjj\appdemo\platforms\android\assets\www\item\html\item.html \
+e:\cjj\appdemo\platforms\android\assets\www\item\html\monitor.html \
+e:\cjj\appdemo\platforms\android\assets\www\item\html\warn.html \
+e:\cjj\appdemo\platforms\android\assets\www\item\html\warndetail.html \
+e:\cjj\appdemo\platforms\android\assets\www\item\js\item.js \
 e:\cjj\appdemo\platforms\android\assets\www\login\css \
 e:\cjj\appdemo\platforms\android\assets\www\login\html \
 e:\cjj\appdemo\platforms\android\assets\www\login\js \

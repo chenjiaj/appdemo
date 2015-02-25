@@ -5,6 +5,9 @@
 a {
   text-decoration: none;
 }
+li {
+  list-style: none;
+}
 #afui #leader {
   background: #fbf3be url('../img/leader.jpg') center center no-repeat;
 }
@@ -45,7 +48,7 @@ a {
   width: 2px !important;
   background-color: rgba(0, 0, 0, 0.3) !important;
 }
-.xdj-tip {
+.com-tip {
   background-color: rgba(0, 0, 0, 0.2);
   padding: 5px 20px;
   position: absolute;
@@ -57,8 +60,17 @@ a {
   box-shadow: 0 3px 3px #ccc;
   font-size: 14px;
 }
+#afui.ios7 header .button {
+  display: inline-block;
+  height: 44px;
+  padding-top: 10px;
+  margin: 0;
+}
 #afui.ios7 header .button:active {
   background-color: #227fce !important;
+}
+#afui.ios7 header .button:before {
+  color: #fff;
 }
 #afui.ios7 header .user:before {
   top: 0;
@@ -66,15 +78,17 @@ a {
 }
 #afui.ios7 header #backButton {
   left: 0;
-  width: 70px;
+  max-width: 70px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  min-width: 30px;
   padding-left: 25px !important;
   padding-right: 10px !important;
 }
 #afui.ios7 header #backButton:before {
   left: 10px;
+  margin-left: 0;
 }
 #afui.ios7 .disabled {
   color: #ccc !important;
@@ -100,4 +114,9 @@ a {
   margin-bottom: 10px;
   border: 1px solid transparent;
   border-radius: 4px;
+}
+.clear-fix:after {
+  clear: both;
+  display: block;
+  content: '';
 }

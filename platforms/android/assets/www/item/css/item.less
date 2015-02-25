@@ -1,0 +1,91 @@
+@border-color:#e3e3e3;
+#afui.ios7{
+    .panel{
+        .item-wrapper{
+            padding-bottom: 10px;
+            .no-item{
+                margin: 20px 0;
+                color: #aaa;
+                font-size: 12px;
+                text-align: center;
+            }
+            a:active{
+                background-color: @border-color;
+            }
+            .item{
+                margin: 10px 0;
+                border:1px solid @border-color;
+                border-radius: 10px;
+                .item-head{
+                    font-size: 16px;
+                    margin: 0;
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                    text-indent: 10px;
+                    height: 34px;
+                    padding: 0;
+                    line-height: 34px;
+                    position: relative;
+                    .item-lookup{
+                        position: absolute;
+                        right:0;
+                        top: 0;
+                        border-top-right-radius: 10px;
+                        font-size: 14px;
+                        display: block;
+                        height: 34px;
+                        line-height: 34px;
+                        padding: 0 7px;
+                        text-indent: 0;
+                        color: #338edc;
+                        height: 100%;
+                        span{
+                            transform: rotate(180deg);
+                            -webkit-transform: rotate(180deg);
+                            display: inline-block;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+                .item-body{
+                    border-top:2px solid @border-color;
+                    padding: 5px 0;
+                    text-align: center;
+
+                    li{
+                        width: 33%;
+                        float: left;
+                        position: relative;
+                        a{
+                            display: block;
+                            width: 80%;
+                            margin: 0 auto;
+                            font-weight: bold;
+                            .item-body-title{
+                                color: #888;
+                            }
+                            .item-body-value{
+                                color: #333;
+                                font-size: 16px;
+                            }
+                            .warn{
+                                color: #ea4b4c;
+                            }
+                        }
+                        .line{
+                            position: absolute;
+                            border-right:1px solid #ddd;
+                            display: inline-block;
+                            height: 60%;
+                            right: 0;
+                            top:15px;
+                        }
+                    }
+
+                }
+
+            }//item
+        }//item-wrapper
+    }//panel end
+}//afui end
+
