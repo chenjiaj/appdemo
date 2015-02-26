@@ -28,6 +28,9 @@ li {
 .icon-spin5:before {
   content: '\e802';
 }
+.icon-spin5 {
+  font-family: "fontello" !important;
+}
 /* '' */
 .icon-menu:before {
   content: '\e803';

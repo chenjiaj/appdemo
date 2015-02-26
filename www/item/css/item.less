@@ -2,12 +2,18 @@
 #afui.ios7{
     .panel{
         .item-wrapper{
-            padding-bottom: 10px;
-            .no-item{
+            padding-bottom: 5px;
+            .no-item{//item.js内添加的元素
                 margin: 20px 0;
                 color: #aaa;
                 font-size: 12px;
                 text-align: center;
+            }
+            .refresh-div{//item.js内添加的元素
+                margin: 10px;
+                text-align: center;
+                font-size: 14px;
+                color:#aaa;
             }
             a:active{
                 background-color: @border-color;
@@ -45,8 +51,8 @@
                             display: inline-block;
                             vertical-align: middle;
                         }
-                    }
-                }
+                    }//item-lookup end
+                }//item-head end
                 .item-body{
                     border-top:2px solid @border-color;
                     padding: 5px 0;
@@ -80,12 +86,12 @@
                             right: 0;
                             top:15px;
                         }
-                    }
+                    }//li end
 
-                }
+                }//item-body end
 
-            }//item
-        }//item-wrapper
+            }//item end
+        }//item-wrapper end
     }//panel end
 }//afui end
 

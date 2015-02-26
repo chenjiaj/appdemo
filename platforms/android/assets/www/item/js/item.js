@@ -8,6 +8,7 @@
 function itemLoad(){
     window.itemMark = true;//设置报错信息是否显示标识，防止切换到其它页面后再弹出请求失败提醒
     var itemLoad = {
+        itemWrapper:$(".item-wrapper"),
         init:function(){
             index = 0;
             this.renderPage();
@@ -18,8 +19,19 @@ function itemLoad(){
             _this.tocken = COM.loginStorage.checkTocken();
             if(_this.tocken){
                 COM.sendXHR(function(){
-                    $(".item-wrapper").html('');
-                    $.ui.showMask('加载中...');
+                    var itemWrapper = _this.itemWrapper;
+                    if(itemWrapper.children(".item").length>0){
+                        _this.itemExist = true;
+                    }
+
+                    if(_this.itemExist){
+                        _this.div = "<div class='refresh-div'><span class='animate-spin icon-spin5'></span>更新中...</div>";
+                        itemWrapper.prepend(_this.div);
+                    }else{
+                        itemWrapper.html('');
+                        $.ui.showMask('加载中...');
+                    }
+
                     $.ajax({
                         type:'get',
                         dataType:'json',
@@ -30,7 +42,8 @@ function itemLoad(){
                             include_docs:false
                         },
                         success:function(res){
-                            $.ui.hideMask();
+                            $.ui.hideMask();//更新时确保已隐藏，加载时隐藏
+                            itemWrapper.html('');//更新时也需清空，加载时确保已清空
                             var len = res.rows.length;
                             if(len > 0){
                                 for(var i = 0; i < len ; i++){
@@ -64,7 +77,7 @@ function itemLoad(){
                                         '</ul>'+
                                         '</div>'
 
-                                    $(".item-wrapper").append(item);
+                                    itemWrapper.append(item);
                                 }//for循环结束
 
                                 $(".item-lookup").click(function(e){
@@ -80,7 +93,7 @@ function itemLoad(){
                                 $(".refresh").click(function(){
                                     $.ui.loadContent("#item",false,false,"up");
                                 });
-                                $(".item-wrapper").append(info);
+                                this.itemWrapper.append(info);
                             }
 
                         },
