@@ -10,5 +10,6 @@ var domainsName='open.iot.10086.cn';
 var AJAXURL = {
     $registerUrl:'http://'+domainsName+'/register/index',
     $loginUrl:'http://'+domainsName+'/login/index',
-    $myItemList:'http://plugins.cordova.io/_view/updated?descending=true&limit=10&include_docs=false'
+    $myItemList:'http://plugins.cordova.io/_view/updated?descending=true&limit=10&include_docs=false',
+    $ItemDetail:'http://plugins.cordova.io/api/org.apache.cordova.device'
 }

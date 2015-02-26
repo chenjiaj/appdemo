@@ -1,11 +1,50 @@
-#afui.ios7 .panel .item-wrapper {
-  padding-bottom: 5px;
+#afui.ios7 .panel {
+  /**
+       ** common
+       ** common
+       **/
+  /**
+        ** item.html
+        ** item.html
+        **/
+  /**
+       ** detail.html
+       ** detail.html
+       **/
+  /**
+        ** monitor.html
+        ** monitor.html
+        **/
 }
-#afui.ios7 .panel .item-wrapper .no-item {
+#afui.ios7 .panel .no-item {
   margin: 20px 0;
   color: #aaa;
   font-size: 12px;
   text-align: center;
+}
+#afui.ios7 .panel .tableStyle {
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+#afui.ios7 .panel .tableStyle tr td:nth-child(1) {
+  width: 30%;
+}
+#afui.ios7 .panel .tableStyle td,
+#afui.ios7 .panel .tableStyle th {
+  padding: 5px;
+  border: 1px solid #eee;
+  word-break: break-all;
+}
+#afui.ios7 .panel .tableStyle .monitor a {
+  color: #338edc;
+  display: block;
+  padding: 5px;
+}
+#afui.ios7 .panel .tableStyle .monitor a:active {
+  background-color: #eee;
+}
+#afui.ios7 .panel .item-wrapper {
+  padding-bottom: 5px;
 }
 #afui.ios7 .panel .item-wrapper .refresh-div {
   margin: 10px;
@@ -31,6 +70,10 @@
   padding: 0;
   line-height: 34px;
   position: relative;
+  padding-right: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 #afui.ios7 .panel .item-wrapper .item .item-head .item-lookup {
   position: absolute;
@@ -85,4 +128,52 @@
   height: 60%;
   right: 0;
   top: 15px;
+}
+#afui.ios7 .panel .detail-wrapper .item-intro table {
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+#afui.ios7 .panel .detail-wrapper .item-intro table tr td:nth-child(1) {
+  width: 30%;
+}
+#afui.ios7 .panel .detail-wrapper .item-intro table td,
+#afui.ios7 .panel .detail-wrapper .item-intro table th {
+  padding: 5px;
+  border: 1px solid #eee;
+  word-break: break-all;
+}
+#afui.ios7 .panel .detail-wrapper .item-intro table .monitor a {
+  color: #338edc;
+  display: block;
+  padding: 5px;
+}
+#afui.ios7 .panel .detail-wrapper .item-intro table .monitor a:active {
+  background-color: #eee;
+}
+#afui.ios7 .panel .monlist-wrapper .monitor-list table {
+  border-collapse: collapse;
+  margin-top: 10px;
+  width: 100%;
+}
+#afui.ios7 .panel .monlist-wrapper .monitor-list table tr td:nth-child(1) {
+  width: 30%;
+}
+#afui.ios7 .panel .monlist-wrapper .monitor-list table td,
+#afui.ios7 .panel .monlist-wrapper .monitor-list table th {
+  padding: 5px;
+  border: 1px solid #eee;
+  word-break: break-all;
+}
+#afui.ios7 .panel .monlist-wrapper .monitor-list table .monitor a {
+  color: #338edc;
+  display: block;
+  padding: 5px;
+}
+#afui.ios7 .panel .monlist-wrapper .monitor-list table .monitor a:active {
+  background-color: #eee;
+}
+#afui.ios7 .panel .monlist-wrapper .monitor-list table td,
+#afui.ios7 .panel .monlist-wrapper .monitor-list table th {
+  height: 40px;
+  text-align: center;
 }

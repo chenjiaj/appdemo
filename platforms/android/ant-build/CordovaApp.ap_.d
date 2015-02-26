@@ -66,6 +66,7 @@ e:\cjj\appdemo\platforms\android\assets\www\common\font\fontello.ttf \
 e:\cjj\appdemo\platforms\android\assets\www\common\font\fontello.woff \
 e:\cjj\appdemo\platforms\android\assets\www\common\img\leader.jpg \
 e:\cjj\appdemo\platforms\android\assets\www\common\js\appframework.js \
+e:\cjj\appdemo\platforms\android\assets\www\common\js\baiduTemplate.js \
 e:\cjj\appdemo\platforms\android\assets\www\common\js\common.js \
 e:\cjj\appdemo\platforms\android\assets\www\common\js\config.js \
 e:\cjj\appdemo\platforms\android\assets\www\common\js\form-validator.js \
@@ -117,9 +118,12 @@ e:\cjj\appdemo\platforms\android\assets\www\item\css\item.less \
 e:\cjj\appdemo\platforms\android\assets\www\item\html\detail.html \
 e:\cjj\appdemo\platforms\android\assets\www\item\html\item.html \
 e:\cjj\appdemo\platforms\android\assets\www\item\html\monitor.html \
+e:\cjj\appdemo\platforms\android\assets\www\item\html\monitorDetail.html \
 e:\cjj\appdemo\platforms\android\assets\www\item\html\warn.html \
 e:\cjj\appdemo\platforms\android\assets\www\item\html\warndetail.html \
+e:\cjj\appdemo\platforms\android\assets\www\item\js\detail.js \
 e:\cjj\appdemo\platforms\android\assets\www\item\js\item.js \
+e:\cjj\appdemo\platforms\android\assets\www\item\js\monitor.js \
 e:\cjj\appdemo\platforms\android\assets\www\login\css \
 e:\cjj\appdemo\platforms\android\assets\www\login\html \
 e:\cjj\appdemo\platforms\android\assets\www\login\js \

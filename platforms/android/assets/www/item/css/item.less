@@ -1,14 +1,49 @@
 @border-color:#e3e3e3;
 #afui.ios7{
     .panel{
+
+        /**
+       ** common
+       ** common
+       **/
+        .no-item{//item.js内添加的元素
+            margin: 20px 0;
+            color: #aaa;
+            font-size: 12px;
+            text-align: center;
+        }
+        .tableStyle{
+            border-collapse: collapse;
+            margin-top: 10px;
+            tr{
+                td:nth-child(1){
+                    width: 30%;
+
+                }
+            }
+            td,th{
+                padding: 5px;
+                border: 1px solid #eee;
+                word-break: break-all;
+            }
+            .monitor{
+                a{
+                    color:#338edc;
+                    display: block;
+                    padding: 5px;
+                    &:active{
+                        background-color: #eee;
+                    }
+                }
+            }
+        }
+        /**
+        ** item.html
+        ** item.html
+        **/
         .item-wrapper{
             padding-bottom: 5px;
-            .no-item{//item.js内添加的元素
-                margin: 20px 0;
-                color: #aaa;
-                font-size: 12px;
-                text-align: center;
-            }
+
             .refresh-div{//item.js内添加的元素
                 margin: 10px;
                 text-align: center;
@@ -32,6 +67,10 @@
                     padding: 0;
                     line-height: 34px;
                     position: relative;
+                    padding-right: 70px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
                     .item-lookup{
                         position: absolute;
                         right:0;
@@ -92,6 +131,36 @@
 
             }//item end
         }//item-wrapper end
+
+        /**
+       ** detail.html
+       ** detail.html
+       **/
+
+        .detail-wrapper{
+            .item-intro{
+                table{
+                    .tableStyle;
+                }
+            }
+        }
+        /**
+        ** monitor.html
+        ** monitor.html
+        **/
+        .monlist-wrapper{
+            .monitor-list{
+                table{
+                    .tableStyle;
+                    width: 100%;
+                    td,th{
+                       height: 40px;
+                       text-align: center;
+                    }
+                }
+            }
+        }
+
     }//panel end
 }//afui end
 
