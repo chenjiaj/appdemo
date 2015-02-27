@@ -77,7 +77,7 @@ function detailLoad(){
             });
         },
         bindEvent:function(){
-            $(".all-monitor").bind('tap',function(e){
+            $(".all-monitor").bind('click',function(e){
                 e.preventDefault();
                 window.itemID =  $(this).closest(".item").attr("data-id");//传递查询的项目ID
                 window.monitorMark = 'all';
@@ -86,7 +86,7 @@ function detailLoad(){
                 $.ui.loadContent("#monitor",false,false,"up");
             });
 
-            $(".open-monitor").bind('tap',function(e){
+            $(".open-monitor").bind('click',function(e){
                 e.preventDefault();
                 window.itemID =  $(this).closest(".item").attr("data-id");//传递查询的项目ID
                 window.name = $(this).closest(".item").attr("data-name");//传递查询的项目名称
@@ -95,7 +95,7 @@ function detailLoad(){
                 $.ui.loadContent("#monitor",false,false,"up");
             });
 
-            $(".warn-monitor").bind('tap',function(e){
+            $(".warn-monitor").bind('click',function(e){
                 e.preventDefault();
                 window.itemID =  $(this).closest(".item").attr("data-id");//传递查询的项目ID
                 window.name = $(this).closest(".item").attr("data-name");//传递查询的项目名称

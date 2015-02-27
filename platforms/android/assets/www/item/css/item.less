@@ -41,6 +41,19 @@
                 }
             }
         }
+        .warn-list{
+            overflow: visible !important;
+            .scrollBar{
+                //width: 0 !important;
+            }
+        }
+
+        .refresh-div{//item.js内添加的元素
+            margin: 10px;
+            text-align: center;
+            font-size: 14px;
+            color:#aaa;
+        }
         /**
         ** item.html
         ** item.html
@@ -48,12 +61,7 @@
         .item-wrapper{
             padding-bottom: 5px;
 
-            .refresh-div{//item.js内添加的元素
-                margin: 10px;
-                text-align: center;
-                font-size: 14px;
-                color:#aaa;
-            }
+
             a:active{
                 background-color: @border-color;
             }
