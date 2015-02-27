@@ -109,7 +109,7 @@ function itemLoad(){
             }
         },
         bindEvent:function(){
-            $(".item-lookup").click(function(e){//查看项目详情
+            $(".item-lookup").bind('tap',function(e){//查看项目详情
                 e.preventDefault();
                 window.itemID = $(this).closest(".item").attr("data-id");//向查看页传递查询的项目ID
                 $.ui.loadContent("#detail",false,false,"up");

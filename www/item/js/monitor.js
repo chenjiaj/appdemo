@@ -117,14 +117,14 @@ function monitorLoad(){
             }
         },
         bindEvent:function(){//请求成功后注册事件
-            $(".look").click(function(e){
+            $(".look").bind('tap',function(e){
                 e.preventDefault();
                 window.monitorId = $(this).closest("tr").attr("data-monitor-id");//传递监控点ID
                 window.monitorName = $(this).closest("tr").attr("data-monitor-name");//传递监控点name
                 console.log(window.monitorId);
                 $.ui.loadContent("#monitordetail",false,false,"up");
             });
-            $(".warnList").click(function(e){
+            $(".warnList").bind('tap',function(e){
                 e.preventDefault();
                 window.monitorId = $(this).closest("tr").attr("data-monitor-id");//传递监控点ID
                 window.monitorName = $(this).closest("tr").attr("data-monitor-name");//传递监控点name

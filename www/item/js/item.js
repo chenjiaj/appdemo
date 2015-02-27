@@ -23,7 +23,7 @@ function itemLoad(){
                     if(itemWrapper.children(".item").length>0){
                         _this.itemExist = true;
                     }
-                    if(_this.itemExist){//判断是否已经加载过了
+                    if(_this.itemExist && $(".refresh-div").length <= 0){//判断是否已经加载过了
                         _this.div = "<div class='refresh-div'><span class='animate-spin icon-spin5'></span>更新中...</div>";
                         itemWrapper.prepend(_this.div);
                     }else{
@@ -109,7 +109,7 @@ function itemLoad(){
             }
         },
         bindEvent:function(){
-            $(".item-lookup").click(function(e){//查看项目详情
+            $(".item-lookup").bind('tap',function(e){//查看项目详情
                 e.preventDefault();
                 window.itemID = $(this).closest(".item").attr("data-id");//向查看页传递查询的项目ID
                 $.ui.loadContent("#detail",false,false,"up");
@@ -124,7 +124,7 @@ function itemLoad(){
                 $.ui.loadContent("#monitor",false,false,"up");
             });
 
-            $(".open-monitor").click(function(e){
+            $(".open-monitor")..bind('tap',function(e){
                 e.preventDefault();
                 window.itemID =  $(this).closest(".item").attr("data-id");//传递查询的项目ID
                 window.name = $(this).closest(".item").attr("data-name");//传递查询的项目名称
@@ -133,7 +133,7 @@ function itemLoad(){
                 $.ui.loadContent("#monitor",false,false,"up");
             });
 
-            $(".warn-monitor").click(function(e){
+            $(".warn-monitor").bind('tap',function(e){
                 e.preventDefault();
                 window.itemID =  $(this).closest(".item").attr("data-id");//传递查询的项目ID
                 window.name = $(this).closest(".item").attr("data-name");//传递查询的项目名称
