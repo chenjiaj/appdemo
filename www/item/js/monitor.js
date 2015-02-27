@@ -59,7 +59,7 @@ function monitorLoad(){
                     }
             });
         },
-        getMonitorText:function(){
+        getMonitorText:function(){//获得页面显示文本
             if(this.monitorMark == 'all'){
                 return '所有监控点';
             }else if(this.monitorMark == 'open'){
@@ -68,7 +68,7 @@ function monitorLoad(){
                 return '24小时内报警点';
             }
         },
-        getSendMonitorStatus:function(){
+        getSendMonitorStatus:function(){//获得发送请求的监控状态值
             if(this.monitorMark == 'all'){
                 return 0;
             }else if(this.monitorMark == 'open'){
@@ -77,7 +77,7 @@ function monitorLoad(){
                 return -1;
             }
         },
-        successCallBack:function(res){
+        successCallBack:function(res){//请求成功后调用的回调函数
             var _this = this;
             var data = res.maintainers;
             if(data.length > 0){
@@ -85,23 +85,21 @@ function monitorLoad(){
                     '<tr>'+
                         '<th>监控点</th>'+
                         '<th>名称</th>'+
-                        '<th style="width: 115px">操作</th>'+
+                        '<th style="width: 120px">操作</th>'+
                     '</tr>';
 
                 for(var i = 0;i<data.length;i++){
                     var item = data[i];
-                    var tr = '<tr data-monitor-id="1">'+
+                    var tr = '<tr data-monitor-id="1" data-monitor-name = "监控点名称">'+
                                 '<td>data_upload</td>'+
                                 '<td>数据上传</td>'+
                                 '<td>' +
                                     '<a href="#" class="look">查看</a>' +
-                                    '&nbsp;&nbsp;' +
+                                    '&nbsp;' +
                                     '<a href="#" class="warnList">报警记录</a>' +
                                 '</td>'+
                             '</tr>';
                         table += tr;
-
-                    _this.bindEvent();
                 }
                 table += '</table>';
                 _this.$content.html(table);
@@ -118,16 +116,18 @@ function monitorLoad(){
                 _this.$content.append(info);
             }
         },
-        bindEvent:function(){
+        bindEvent:function(){//请求成功后注册事件
             $(".look").click(function(e){
                 e.preventDefault();
                 window.monitorId = $(this).closest("tr").attr("data-monitor-id");//传递监控点ID
-                console.log( window.monitorId);
+                window.monitorName = $(this).closest("tr").attr("data-monitor-name");//传递监控点name
+                console.log(window.monitorId);
                 $.ui.loadContent("#monitordetail",false,false,"up");
             });
             $(".warnList").click(function(e){
                 e.preventDefault();
                 window.monitorId = $(this).closest("tr").attr("data-monitor-id");//传递监控点ID
+                window.monitorName = $(this).closest("tr").attr("data-monitor-name");//传递监控点name
                 console.log( window.monitorId);
                 $.ui.loadContent("#item-warn",false,false,"up");
             });
@@ -138,5 +138,6 @@ function monitorLoad(){
 
 function unmonitorLoad(){
     window.itemMark = null;
+    $(".monitor-list").html('');
     $.ui.hideMask();
 }

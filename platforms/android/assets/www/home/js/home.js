@@ -37,7 +37,7 @@ function onBackKeyDown(){//连续点击返回键，退出香道佳系统
         index = 0;
     },2000);
     if(index == 1){
-        tip('再按一次返回键退出香道佳');
+        tip('再按一次返回键退出监控报警系统');
     }else if(index > 1){
         navigator.app.exitApp();
     }

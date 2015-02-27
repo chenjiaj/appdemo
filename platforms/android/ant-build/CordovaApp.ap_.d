@@ -123,7 +123,9 @@ e:\cjj\appdemo\platforms\android\assets\www\item\html\warn.html \
 e:\cjj\appdemo\platforms\android\assets\www\item\html\warndetail.html \
 e:\cjj\appdemo\platforms\android\assets\www\item\js\detail.js \
 e:\cjj\appdemo\platforms\android\assets\www\item\js\item.js \
+e:\cjj\appdemo\platforms\android\assets\www\item\js\mondetail.js \
 e:\cjj\appdemo\platforms\android\assets\www\item\js\monitor.js \
+e:\cjj\appdemo\platforms\android\assets\www\item\js\warn.js \
 e:\cjj\appdemo\platforms\android\assets\www\login\css \
 e:\cjj\appdemo\platforms\android\assets\www\login\html \
 e:\cjj\appdemo\platforms\android\assets\www\login\js \

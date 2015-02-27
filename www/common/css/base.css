@@ -85,7 +85,7 @@ li {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  min-width: 30px;
+  min-width: 40px;
   padding-left: 25px !important;
   padding-right: 10px !important;
 }

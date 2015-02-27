@@ -15,6 +15,10 @@
         ** monitor.html
         ** monitor.html
         **/
+  /**
+         ** monitorDetail.html
+         ** monitorDetail.html
+         **/
 }
 #afui.ios7 .panel .no-item {
   margin: 20px 0;
@@ -36,11 +40,13 @@
   word-break: break-all;
 }
 #afui.ios7 .panel .tableStyle .monitor a {
-  color: #338edc;
   display: block;
+}
+#afui.ios7 .panel .tableStyle td a {
+  color: #338edc;
   padding: 5px;
 }
-#afui.ios7 .panel .tableStyle .monitor a:active {
+#afui.ios7 .panel .tableStyle td a:active {
   background-color: #eee;
 }
 #afui.ios7 .panel .item-wrapper {
@@ -143,11 +149,13 @@
   word-break: break-all;
 }
 #afui.ios7 .panel .detail-wrapper .item-intro table .monitor a {
-  color: #338edc;
   display: block;
+}
+#afui.ios7 .panel .detail-wrapper .item-intro table td a {
+  color: #338edc;
   padding: 5px;
 }
-#afui.ios7 .panel .detail-wrapper .item-intro table .monitor a:active {
+#afui.ios7 .panel .detail-wrapper .item-intro table td a:active {
   background-color: #eee;
 }
 #afui.ios7 .panel .monlist-wrapper .monitor-list table {
@@ -165,15 +173,78 @@
   word-break: break-all;
 }
 #afui.ios7 .panel .monlist-wrapper .monitor-list table .monitor a {
-  color: #338edc;
   display: block;
+}
+#afui.ios7 .panel .monlist-wrapper .monitor-list table td a {
+  color: #338edc;
   padding: 5px;
 }
-#afui.ios7 .panel .monlist-wrapper .monitor-list table .monitor a:active {
+#afui.ios7 .panel .monlist-wrapper .monitor-list table td a:active {
   background-color: #eee;
 }
 #afui.ios7 .panel .monlist-wrapper .monitor-list table td,
 #afui.ios7 .panel .monlist-wrapper .monitor-list table th {
-  height: 40px;
+  height: 35px;
   text-align: center;
+}
+#afui.ios7 .panel .monDetail-wrapper .monitor-Detail table {
+  border-collapse: collapse;
+  margin-top: 10px;
+  width: 100%;
+}
+#afui.ios7 .panel .monDetail-wrapper .monitor-Detail table tr td:nth-child(1) {
+  width: 30%;
+}
+#afui.ios7 .panel .monDetail-wrapper .monitor-Detail table td,
+#afui.ios7 .panel .monDetail-wrapper .monitor-Detail table th {
+  padding: 5px;
+  border: 1px solid #eee;
+  word-break: break-all;
+}
+#afui.ios7 .panel .monDetail-wrapper .monitor-Detail table .monitor a {
+  display: block;
+}
+#afui.ios7 .panel .monDetail-wrapper .monitor-Detail table td a {
+  color: #338edc;
+  padding: 5px;
+}
+#afui.ios7 .panel .monDetail-wrapper .monitor-Detail table td a:active {
+  background-color: #eee;
+}
+#afui.ios7 .panel .monDetail-wrapper .monitor-Detail table td,
+#afui.ios7 .panel .monDetail-wrapper .monitor-Detail table th {
+  height: 35px;
+  text-align: center;
+}
+#afui.ios7 .panel .monwarn-wrapper .warn-list table {
+  border-collapse: collapse;
+  margin-top: 10px;
+  width: 100%;
+}
+#afui.ios7 .panel .monwarn-wrapper .warn-list table tr td:nth-child(1) {
+  width: 30%;
+}
+#afui.ios7 .panel .monwarn-wrapper .warn-list table td,
+#afui.ios7 .panel .monwarn-wrapper .warn-list table th {
+  padding: 5px;
+  border: 1px solid #eee;
+  word-break: break-all;
+}
+#afui.ios7 .panel .monwarn-wrapper .warn-list table .monitor a {
+  display: block;
+}
+#afui.ios7 .panel .monwarn-wrapper .warn-list table td a {
+  color: #338edc;
+  padding: 5px;
+}
+#afui.ios7 .panel .monwarn-wrapper .warn-list table td a:active {
+  background-color: #eee;
+}
+#afui.ios7 .panel .monwarn-wrapper .warn-list table td,
+#afui.ios7 .panel .monwarn-wrapper .warn-list table th {
+  height: 35px;
+  text-align: center;
+}
+#afui.ios7 .panel .monwarn-wrapper .warn-list table tr td:nth-child(1) {
+  width: 35%;
 }
