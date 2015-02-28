@@ -13,6 +13,7 @@ function itemWarnLoad(){
     }else{
         window.WarnLoad = {
             $content:$(".warn-list"),
+            $info:$('.monwarn-wrapper .refresh-div'),
             $itemName:$(".monwarn-wrapper .item-name"),
             $monitorName:$(".monwarn-wrapper .monitor-name"),
             init: function(){
@@ -28,6 +29,7 @@ function itemWarnLoad(){
                 this.monitorId = window.monitorId;//传递过来的参数
                 this.itemname = window.name;//传递过来的参数
                 this.monitorName = window.monitorName;
+                this.$info.html("");
             },
             renderData:function(){
                 this.initData();
@@ -52,10 +54,6 @@ function itemWarnLoad(){
                                     _this.pageIndex ++;
                                     _this.sendRequest();
 
-                                }else{
-                                    if(_this.$content.find(".returnbottom").length<=0){
-                                        _this.$content.append("<p style='color: #ccc;text-align: center;' class='returnbottom'>已经到达底部</p>");
-                                    }
                                 }
                             }
 
@@ -80,9 +78,7 @@ function itemWarnLoad(){
                     _this.isscroll = true;
                     if(!_this.sendFist){
                         if(_this.$content.find(".refresh-div").length <=0){
-                            _this.$content.append("<div class='refresh-div' style='padding-bottom: 10px;'>" +
-                                "<span class='animate-spin icon-spin5'></span>加载中..." +
-                                "</div>");
+                            _this.$info.html("<span class='animate-spin icon-spin5'></span>加载中...");
                         }
                     }else{
                         $.ui.showMask('加载中...');
@@ -101,18 +97,20 @@ function itemWarnLoad(){
                             },
                             url:AJAXURL.$ItemDetail,
                             success:function(res){
+                                _this.successCallBack(res);
+                                _this.isscroll = false;
+                                _this.$info.html("上拉加载新数据");
                                 if(!_this.sendFist){
-                                    $(".refresh-div").remove();
+                                    if(_this.pageIndex >= _this.sumPage){
+                                        _this.$info.html("已经到达底部");
+                                    }
                                 }else{
                                     $.ui.hideMask();
                                 }
-                                _this.successCallBack(res);
-                                _this.isscroll = false;
                             },
                             error:function(e){
-                                if(!_this.sendFist){
-                                    $(".refresh-div").remove();
-                                }else{
+                                _this.$info.html("上拉加载新数据");
+                                if(_this.sendFist){
                                     $.ui.hideMask();
                                 }
                                 if(window.itemMark){
@@ -178,5 +176,4 @@ function unitemWarnLoad(){
     window.itemMark = null;
     $(".warn-list").html('');
     $.ui.hideMask();
-    $(".refresh-div").remove();
 }
