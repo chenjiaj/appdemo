@@ -7,19 +7,28 @@
  */
 
 function monitorLoad(){
-    var monitorLoad = {
+    if(window.monitorLoadObj){
+        window.monitorLoadObj.renderPage();
+    }else{    window.monitorLoadObj = {
         $content:$(".monitor-list"),
         $itemName:$(".monlist-wrapper .item-name"),
         $monitorText:$(".monlist-wrapper .smonitor"),
         $headTitle:$(".head-title"),
-        itemid:window.itemID,//传递过来的参数
-        monitorMark:window.monitorMark,//传递过来的参数
-        itemname:window.name,//传递过来的参数
         init:function(){
             this.renderPage();
+            this.bindEvent();
             window.itemMark = true;
         },
         renderPage:function(){//初始化页面
+            this.initData();
+            this.renderData();
+        },
+        initData:function(){
+            this.itemid=window.itemID;//传递过来的参数
+            this.monitorMark=window.monitorMark;//传递过来的参数
+            this.itemname=window.name;//传递过来的参数
+        },
+        renderData:function(){
             var _this = this;
             _this.$itemName.html(_this.itemname);
             var monitorText = _this.getMonitorText();
@@ -29,34 +38,34 @@ function monitorLoad(){
             //发送请求获得监控点列表
             var monitorCode = _this.getSendMonitorStatus();
             COM.sendXHR(function(){
-                    $.ui.showMask('加载中...');
-                    _this.$content.html('');
-                    _this.tocken = COM.loginStorage.checkTocken();
-                    if(_this.itemid && _this.tocken){
-                        $.ajax({
-                            type:'get',
-                            dataType:'json',
-                            data:{
-                                id:_this.itemid,
-                                run:Math.random(),
-                                tocken: _this.tocken,
-                                status:_this.getSendMonitorStatus()
-                            },
-                            url:AJAXURL.$ItemDetail,
-                            success:function(res){
-                                $.ui.hideMask();
-                                _this.successCallBack(res);
-                            },
-                            error:function(e){
-                                $.ui.hideMask();
-                                if(window.itemMark){
-                                    alert("请求失败，请检查网络连接！" + JSON.stringify(e));
-                                }
+                $.ui.showMask('加载中...');
+                _this.$content.html('');
+                _this.tocken = COM.loginStorage.checkTocken();
+                if(_this.itemid && _this.tocken){
+                    $.ajax({
+                        type:'get',
+                        dataType:'json',
+                        data:{
+                            id:_this.itemid,
+                            run:Math.random(),
+                            tocken: _this.tocken,
+                            status:_this.getSendMonitorStatus()
+                        },
+                        url:AJAXURL.$ItemDetail,
+                        success:function(res){
+                            $.ui.hideMask();
+                            _this.successCallBack(res);
+                        },
+                        error:function(e){
+                            $.ui.hideMask();
+                            if(window.itemMark){
+                                alert("请求失败，请检查网络连接！" + JSON.stringify(e));
                             }
-                        });
-                    }else{
-                        $.ui.goBack();
-                    }
+                        }
+                    });
+                }else{
+                    $.ui.goBack();
+                }
             });
         },
         getMonitorText:function(){//获得页面显示文本
@@ -83,27 +92,26 @@ function monitorLoad(){
             if(data.length > 0){
                 var table = ' <table>'+
                     '<tr>'+
-                        '<th>监控点</th>'+
-                        '<th>名称</th>'+
-                        '<th style="width: 120px">操作</th>'+
+                    '<th>监控点</th>'+
+                    '<th>名称</th>'+
+                    '<th style="width: 120px">操作</th>'+
                     '</tr>';
 
                 for(var i = 0;i<data.length;i++){
                     var item = data[i];
                     var tr = '<tr data-monitor-id="1" data-monitor-name = "监控点名称">'+
-                                '<td>data_upload</td>'+
-                                '<td>数据上传</td>'+
-                                '<td>' +
-                                    '<a href="#" class="look">查看</a>' +
-                                    '&nbsp;' +
-                                    '<a href="#" class="warnList">报警记录</a>' +
-                                '</td>'+
-                            '</tr>';
-                        table += tr;
+                        '<td>data_upload</td>'+
+                        '<td>数据上传</td>'+
+                        '<td>' +
+                        '<a href="#" class="look">查看</a>' +
+                        '&nbsp;' +
+                        '<a href="#" class="warnList">报警记录</a>' +
+                        '</td>'+
+                        '</tr>';
+                    table += tr;
                 }
                 table += '</table>';
                 _this.$content.html(table);
-                _this.bindEvent();
             }else{
                 var info = '<p class="no-item">暂无监控点，请登录web版关注' +
                     '</br>' +
@@ -117,14 +125,14 @@ function monitorLoad(){
             }
         },
         bindEvent:function(){//请求成功后注册事件
-            $(".look").bind('click',function(e){
+            this.$content.on('click','.look',function(e){
                 e.preventDefault();
                 window.monitorId = $(this).closest("tr").attr("data-monitor-id");//传递监控点ID
                 window.monitorName = $(this).closest("tr").attr("data-monitor-name");//传递监控点name
                 console.log(window.monitorId);
                 $.ui.loadContent("#monitordetail",false,false,"up");
             });
-            $(".warnList").bind('click',function(e){
+            this.$content.on('click','.warnList',function(e){
                 e.preventDefault();
                 window.monitorId = $(this).closest("tr").attr("data-monitor-id");//传递监控点ID
                 window.monitorName = $(this).closest("tr").attr("data-monitor-name");//传递监控点name
@@ -133,7 +141,10 @@ function monitorLoad(){
             });
         }
     }
-    monitorLoad.init();
+        window.monitorLoadObj.init();
+
+    }
+
 }
 
 function unmonitorLoad(){
