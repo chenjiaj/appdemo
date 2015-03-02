@@ -16,8 +16,8 @@
         ** monitor.html
         **/
   /**
-         ** monitorDetail.html
-         ** monitorDetail.html
+         ** monitordetail.html
+         ** monitordetail.html
          **/
 }
 #afui.ios7 .panel .no-item {
@@ -216,35 +216,64 @@
   height: 35px;
   text-align: center;
 }
-#afui.ios7 .panel .monwarn-wrapper .warn-list table {
+#afui.ios7 .panel .warn-list table {
   border-collapse: collapse;
   margin-top: 10px;
   width: 100%;
 }
-#afui.ios7 .panel .monwarn-wrapper .warn-list table tr td:nth-child(1) {
+#afui.ios7 .panel .warn-list table tr td:nth-child(1) {
   width: 30%;
 }
-#afui.ios7 .panel .monwarn-wrapper .warn-list table td,
-#afui.ios7 .panel .monwarn-wrapper .warn-list table th {
+#afui.ios7 .panel .warn-list table td,
+#afui.ios7 .panel .warn-list table th {
   padding: 5px;
   border: 1px solid #eee;
   word-break: break-all;
 }
-#afui.ios7 .panel .monwarn-wrapper .warn-list table .monitor a {
+#afui.ios7 .panel .warn-list table .monitor a {
   display: block;
 }
-#afui.ios7 .panel .monwarn-wrapper .warn-list table td a {
+#afui.ios7 .panel .warn-list table td a {
   color: #338edc;
   padding: 5px;
 }
-#afui.ios7 .panel .monwarn-wrapper .warn-list table td a:active {
+#afui.ios7 .panel .warn-list table td a:active {
   background-color: #eee;
 }
-#afui.ios7 .panel .monwarn-wrapper .warn-list table td,
-#afui.ios7 .panel .monwarn-wrapper .warn-list table th {
+#afui.ios7 .panel .warn-list table td,
+#afui.ios7 .panel .warn-list table th {
   height: 35px;
   text-align: center;
 }
-#afui.ios7 .panel .monwarn-wrapper .warn-list table tr td:nth-child(1) {
+#afui.ios7 .panel .warn-list table tr td:nth-child(1) {
   width: 35%;
+}
+#afui.ios7 .panel .home-warn-list table {
+  border-collapse: collapse;
+  margin-top: 10px;
+  width: 100%;
+}
+#afui.ios7 .panel .home-warn-list table tr td:nth-child(1) {
+  width: 30%;
+}
+#afui.ios7 .panel .home-warn-list table td,
+#afui.ios7 .panel .home-warn-list table th {
+  padding: 5px;
+  border: 1px solid #eee;
+  word-break: break-all;
+}
+#afui.ios7 .panel .home-warn-list table .monitor a {
+  display: block;
+}
+#afui.ios7 .panel .home-warn-list table td a {
+  color: #338edc;
+  padding: 5px;
+}
+#afui.ios7 .panel .home-warn-list table td a:active {
+  background-color: #eee;
+}
+#afui.ios7 .panel .home-warn-list table td,
+#afui.ios7 .panel .home-warn-list table th {
+  height: 35px;
+  text-align: center;
 }

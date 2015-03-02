@@ -11,7 +11,6 @@
     <link type="text/css" rel="stylesheet" href="common/css/ios7.css"/>
     <link type="text/css" rel="stylesheet" href="common/css/icons.css"/>
     <link type="text/css" rel="stylesheet" href="common/css/fontello.css"/>
-    <link type="text/css" rel="stylesheet" href="common/css/animation.css"/>
     <link type="text/css" rel="stylesheet" href="common/css/lists.css"/>
     <link type="text/css" rel="stylesheet" href="common/css/forms.css"/>
     <link type="text/css" rel="stylesheet" href="common/css/buttons.css"/>
@@ -20,26 +19,15 @@
     <link type="text/css" rel="stylesheet" href="common/css/base.css"/>
     <!--单个页面对应的css-->
     <link href="login/css/login.css" type="text/css" rel="stylesheet"/>
-    <link href="user/css/user.css" type="text/css" rel="stylesheet">
     <link href="item/css/item.css" type="text/css" rel="stylesheet">
+    <link href="more/css/more.css" type="text/css" rel="stylesheet">
     <!--app framework 的js-->
     <!--<script type="text/javascript" src="common/js/jquery-1.11.1.min.js"></script>
    <script type="text/javascript" src="common/js/jq.appframework.js"></script>-->
    <script type="text/javascript" src="common/js/appframework.js"></script>
     <script type="text/javascript" src="common/js/ui/appframework.ui.js"></script>
     <script type="text/javascript" src="common/plugins/af.popup.js"></script>
-    <script type="text/javascript" charset="utf-8" src="common/plugins/af.css3animate.js"></script>
     <script type="text/javascript" charset="utf-8" src="common/plugins/af.scroller.js"></script>
-    <script type="text/javascript" charset="utf-8" src="common/plugins/af.touchEvents.js"></script>
-    <script type="text/javascript" charset="utf-8" src="common/plugins/af.passwordBox.js"></script>
-    <script type="text/javascript" charset="utf-8" src="common/plugins/af.touchLayer.js"></script>
-    <script type="text/javascript" charset="utf-8" src="common/js/ui/transitions/fade.js"></script>
-    <script type="text/javascript" charset="utf-8" src="common/js/ui/transitions/flip.js"></script>
-    <script type="text/javascript" charset="utf-8" src="common/js/ui/transitions/pop.js"></script>
-    <script type="text/javascript" charset="utf-8" src="common/js/ui/transitions/slide.js"></script>
-    <script type="text/javascript" charset="utf-8" src="common/js/ui/transitions/slideDown.js"></script>
-    <script type="text/javascript" charset="utf-8" src="common/js/ui/transitions/slideUp.js"></script>
-    <script type="text/javascript" charset="utf-8" src="common/plugins/af.slidemenu.js"></script>
 
     <!--apache cordova 当需要使用cordova的任一一个插件都必须因此该js-->
     <script type="text/javascript" src="cordova.js"></script>
@@ -52,7 +40,8 @@
     <script type="text/javascript" src="common/js/common.js"></script>
 
     <!--每个页面对应的js-->
-    <script type="text/javascript" src="user/js/user.js"></script>
+    <script type="text/javascript" src="more/js/more.js"></script>
+    <script type="text/javascript" src="more/js/user.js"></script>
     <script type="text/javascript" src="login/js/login.js"></script>
     <script type="text/javascript" src="home/js/home.js"></script>
     <script type="text/javascript" src="item/js/item.js"></script>
@@ -60,6 +49,7 @@
     <script type="text/javascript" src="item/js/monitor.js"></script>
     <script type="text/javascript" src="item/js/mondetail.js"></script>
     <script type="text/javascript" src="item/js/warn.js"></script>
+    <script type="text/javascript" src="warn/js/warn.js"></script>
     <title>香道佳</title>
 </head>
 <body>
@@ -67,12 +57,12 @@
     <div id="content">
         <!--主页-->
         <div id="home" class="panel" title="主页" selected="true" data-footer="footer-common" data-tab="nav-home"
-             data-load="homeLoad" data-unload="unhomeLoad" data-defer="home/html/home.html">
+             data-load="homeLoad" data-unload="unhomeLoad" data-defer="home/html/home.html" style="padding-bottom: 0">
         </div>
 
         <!--报警信息-->
         <div id="warn" class="panel" title="报警信息" data-footer="footer-common" data-tab="nav-wran"
-             data-defer="warn/html/warn.html">
+             data-defer="warn/html/warn.html" data-load="warnLoad" data-unload="unwarnLoad">
         </div>
 
         <!--我的项目-->
@@ -89,14 +79,23 @@
              data-defer="item/html/warn.html" data-load="itemWarnLoad" data-unload="unitemWarnLoad"
              style="padding-bottom: 0">
         </div>
-        <div id="monitordetail" class="panel" title="监控详情" data-footer="footer-common" data-tab="nav-item"
-             data-defer="item/html/monitorDetail.html" data-load="monDetailLoad" data-unload="unmonDetailLoad">
+        <div id="monitordetail" class="panel" title="监控详情" data-footer="none" data-tab="nav-item"
+             data-defer="item/html/monitordetail.html" data-load="monDetailLoad" data-unload="unmonDetailLoad">
         </div>
 
         <!--更多-->
         <!--当切换到该页面就会运行userLoad函数-->
         <div id="more" class="panel" title="更多" data-defer="more/html/more.html" data-footer="footer-common"
-             data-tab="nav-user" data-load="userLoad" data-unload="unuserLoad">
+             data-tab="nav-user" data-load="moreLoad" data-unload="unmoreLoad">
+        </div>
+
+        <div id="user" class="panel" title="个人信息" data-footer="none" data-defer="more/html/user.html"
+             data-tab="nav-user" data-load="userLoad"  data-unload="unuserLoad">
+        </div>
+
+
+        <div id="updataversion" class="panel" title="版本更新" data-footer="none" data-defer="more/html/version.html"
+             data-tab="nav-user" data-load="userLoad"  data-unload="unuserLoad">
         </div>
 
         <!--登录-->
@@ -109,11 +108,6 @@
              data-tab="nav-user" data-load="registerLoad" data-unload="unregisterLoad">
         </div>
 
-        <!--个人信息-->
-        <div id="user" class="panel" title="个人信息" data-footer="none" data-defer="user/html/user.html"
-             data-tab="nav-user" data-load="userLoad"  data-unload="unuserLoad">
-        </div>
-
 
         <!--底部-->
         <footer id="footer-common">
@@ -122,13 +116,7 @@
             <a href="#item" id="nav-item" class="icon icon-th-thumb-empty">我的项目</a>
             <a href="#more" id="nav-user" class="icon icon-menu">更多</a>
         </footer>
-        <!--siderbar-->
-        <nav>
-            <ul class="list">
-                <li>fwer</li>
-                <li>fwer</li>
-            </ul>
-        </nav>
+
     </div>
 </div>
 

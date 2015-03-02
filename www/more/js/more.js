@@ -2,18 +2,17 @@
  * Created with JetBrains PhpStorm.
  * Desc:
  * Author: chenjiajun
- * Date: 15-1-27
- * Time: 下午3:13
+ * Date: 15-3-2
+ * Time: 上午11:21
  */
-
-function userLoad(){
+function moreLoad(){
     var loginStorage = COM.loginStorage;
-    loginStorage.currentPage = '#user';
+    loginStorage.currentPage = '#more';
     $('.exit').bind("click",function(){
         loginStorage.exitLogin();
     });
 }
 
-function unuserLoad(){
+function unmoreLoad(){
     $('.exit').unbind('click');
 }

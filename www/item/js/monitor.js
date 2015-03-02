@@ -9,7 +9,8 @@
 function monitorLoad(){
     if(window.monitorLoadObj){
         window.monitorLoadObj.renderPage();
-    }else{    window.monitorLoadObj = {
+    }else{
+        window.monitorLoadObj = {
         $content:$(".monitor-list"),
         $itemName:$(".monlist-wrapper .item-name"),
         $monitorText:$(".monlist-wrapper .smonitor"),

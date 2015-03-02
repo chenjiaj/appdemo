@@ -132,7 +132,7 @@ function itemWarnLoad(){
                     for(var i = 0;i<data.length;i++){
                         var item = data[i];
                         var itemHtml = '<table>' +
-                            '<tr data-monitor-id="1" data-monitor-name = "监控点名称">'+
+                            '<tr>'+
                             '<td>最后报警时间</td>'+
                             '<td>2015-02-03</td>'+
                             '</tr>'+
@@ -160,7 +160,7 @@ function itemWarnLoad(){
                         e.preventDefault();
                         $.ui.loadContent("#monitor",false,false,"up");
                     });
-                    _this.$content.append(info);
+                    _this.$content.html(info);
                 }
                 if(!_this.sendFist){
                     _this.myScroller.scrollToBottom();

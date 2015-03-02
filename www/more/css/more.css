@@ -1,0 +1,90 @@
+#afui.ios7 .panel {
+  /**
+            ** more.html
+            ** more.html
+            **/
+  /**
+            ** user.html
+            ** user.html
+            **/
+}
+#afui.ios7 .panel .more .list {
+  margin: 0;
+}
+#afui.ios7 .panel .more .list li {
+  border-color: #ddd;
+}
+#afui.ios7 .panel .more .list li:first-child {
+  border-top: 0;
+}
+#afui.ios7 .panel .more .list li a .icons {
+  display: inline-block;
+  width: 34px;
+  vertical-align: text-bottom;
+  height: 22px;
+}
+#afui.ios7 .panel .more .list li a .user {
+  background: url("../../common/img/icons.png") -2px -2px no-repeat;
+}
+#afui.ios7 .panel .more .list li a .pass {
+  background: url("../../common/img/icons.png") -1px -27px no-repeat;
+}
+#afui.ios7 .panel .more .list li a .version {
+  background: url("../../common/img/icons.png") -1px -51px no-repeat;
+}
+#afui.ios7 .panel .more .list li .version-link {
+  position: relative;
+  padding-right: 120px;
+}
+#afui.ios7 .panel .more .list li .version-link small {
+  position: absolute;
+  right: 20px;
+  top: 22px;
+  width: 95px;
+  color: #777;
+  font-size: 12px;
+}
+#afui.ios7 .panel .more .list li .version-link .version-text {
+  position: relative;
+  padding-right: 10px;
+  display: inline-block;
+}
+#afui.ios7 .panel .more .list li .version-link .version-text .has-new {
+  position: absolute;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  right: 0;
+  top: 0;
+  border-radius: 8px;
+  background-color: red;
+}
+#afui.ios7 .panel .more .button {
+  background-color: #338edc;
+  border-width: 0 1px 1px 1px;
+  border-color: #fff #2f83cc #276eaa #2f83cc;
+  border-radius: 5px;
+  margin-top: 25px;
+  color: #fff;
+  width: 100%;
+  padding: 10px 0;
+}
+#afui.ios7 .panel .user .list {
+  margin: 0;
+}
+#afui.ios7 .panel .user .list li {
+  border-color: #ddd;
+}
+#afui.ios7 .panel .user .list li:first-child {
+  border-top: 0;
+}
+#afui.ios7 .panel .user .list li:last-child {
+  border-bottom: 0;
+}
+#afui.ios7 .panel .user .list li .right {
+  float: right;
+  color: #777;
+}
+#afui.ios7 .panel .user .list li .key {
+  font-weight: 600;
+}

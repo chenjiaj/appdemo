@@ -1,0 +1,104 @@
+#afui{
+    &.ios7{
+        .panel{
+            /**
+            ** more.html
+            ** more.html
+            **/
+            .more{
+                .list{
+                    margin: 0;
+                    li{
+                        &:first-child{
+                            border-top: 0;
+                        }
+                        border-color: #ddd;
+                        a{
+                            .icons{
+                                display: inline-block;
+                                width: 34px;
+                                vertical-align: text-bottom;
+                                height: 22px;
+                            }
+                            .user{
+                                background: url("../../common/img/icons.png") -2px -2px no-repeat;
+                            }
+                            .pass{
+                                background: url("../../common/img/icons.png") -1px -27px no-repeat;
+                            }
+                            .version{
+                                background: url("../../common/img/icons.png") -1px -51px no-repeat;
+                            }
+
+                        }
+                        .version-link{
+                            position: relative;
+                            padding-right: 120px;
+                            small{
+                                position: absolute;
+                                right: 20px;
+                                top: 22px;
+                                width: 95px;
+                                color: #777;
+                                font-size: 12px;
+                            }
+                            .version-text{
+                                position: relative;
+                                padding-right: 10px;
+                                display: inline-block;
+                                .has-new{
+                                    position: absolute;
+                                    display: inline-block;
+                                    width: 8px;
+                                    height: 8px;
+                                    right: 0;
+                                    top: 0;
+                                    border-radius: 8px;
+                                    background-color: red;
+                                }
+                            }
+                        }//version-link end
+                    }//li end
+                }//list end
+                .button{
+                    background-color: #338edc;
+                    border-width: 0 1px 1px 1px;
+                    border-color:#fff #2f83cc #276eaa #2f83cc;
+                    border-radius: 5px;
+                    margin-top: 25px;
+                    color: #fff;
+                    width: 100%;
+                    padding: 10px 0;
+                }
+            }//morelist end
+
+
+            /**
+            ** user.html
+            ** user.html
+            **/
+            .user{
+                .list{
+                    margin: 0;
+                    li{
+                        &:first-child{
+                            border-top: 0;
+                        }
+                        &:last-child{
+                            border-bottom: 0;
+                        }
+                        border-color: #ddd;
+                        .right{
+                            float: right;
+                            color: #777;
+                        }
+                        .key{
+                            font-weight: 600;
+                        }
+                    }
+
+                }
+            }
+        }//pannel end
+    }//ios7 end
+}//afui end
