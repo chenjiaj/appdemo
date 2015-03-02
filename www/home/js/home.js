@@ -31,7 +31,7 @@ function homeLoad(){
                 this.$info.html("");
             },
             bindEvent:function(){
-                document.addEventListener("backbutton", onBackKeyDown, false);//注册返回事件
+
                 this.bindScroll();
             },
             bindScroll:function(){
@@ -161,6 +161,7 @@ function homeLoad(){
 
         window.homeLoadObj.init();
     }
+    document.addEventListener("backbutton", onBackKeyDown, false);//注册返回事件
 }
 
 function onBackKeyDown(){//连续点击返回键，退出香道佳系统
@@ -180,4 +181,5 @@ function unhomeLoad(){
     window.itemMark = null;
     $(".home-warn-list").html('');
     $.ui.hideMask();
+    document.removeEventListener("backbutton", onBackKeyDown, false);//注册返回事件
 }

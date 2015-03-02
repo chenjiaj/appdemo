@@ -233,11 +233,22 @@ var COM = {
          * tip的样式在base.less
          * **/
         window.tip = function(text,timer){
-            var div  = $('<div class="com-tip">'+text+'</div>');
-            $("body").append(div);
-            div.css({
-                "margin-left":-div.width()/2
+            var tipDiv = $(".com-tip");
+            tipDiv.css({//确保宽度计算正确，在左移前不被挤换行
+                left:'0'
             });
+            if(tipDiv.length <= 0){
+                var div  = $('<div class="com-tip">'+text+'</div>');
+                $("body").append(div);
+            }else{
+                tipDiv.text(text);
+            }
+
+            div.css({
+                "margin-left":-div.width()/2,
+                left:'50%'
+            });
+
             var time = timer || 2000;
             setTimeout(function(){
                 $(div).remove();
