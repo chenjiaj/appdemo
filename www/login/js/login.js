@@ -6,74 +6,95 @@
  * Time: 下午3:52
  */
 function loginLoad(){
-    var loginStorage = COM.loginStorage;
-    var loginBtn = $('#loginBtn');
-    var form = $("#loginForm");
-    var validate = new FormValidator(form);
+    if(window.loginLoadObj){
+        window.loginLoadObj.renderPage();
+    }else{
+        window.loginLoadObj = {
+            $loginBtn:$('#loginBtn'),
+            $form:$("#loginForm"),
+            init:function(){
+                this.validate = new FormValidator(this.$form);
+                this.bindEvent();
+                this.renderPage();
+            },
+            initData:function(){
+                this.$loginBtn.addClass('disabled');
+                var username = localStorage.username;
+                if(username){
+                    this.$form.find('#username').val(localStorage.username);
+                }
+            },
+            renderPage:function(){
+                this.initData();
+            },
+            bindEvent:function(){
+                var _this = this;
+                $("input").bind('keyup',function(){
+                    if(_this.validate.checkall() === true){
+                        _this.$loginBtn.removeClass('disabled');
+                    }else{
+                        _this.$loginBtn.addClass('disabled');
+                    }
+                });
 
-    loginBtn.addClass('disabled');
-
-    $("input").bind('keyup',function(){
-        if(validate.checkall() === true){
-            loginBtn.removeClass('disabled');
-        }else{
-            loginBtn.addClass('disabled');
+                this.$loginBtn.bind("click",function(){
+                    if(!_this.$loginBtn.hasClass('disabled')){
+                        COM.loginStorage.submitLogin();
+                    }
+                });
+            }
         }
-    });
 
-    loginBtn.bind("click",function(){
-        if(!loginBtn.hasClass('disabled')){
-            loginStorage.submitLogin();
-        }
-    });
-
-    var username = localStorage.username;
-    if(username){
-        $("#loginForm").find('#username').val(localStorage.username);
+        window.loginLoadObj.init();
     }
+
+
 }
 
 function unloginLoad(){
-    $('#loginBtn').unbind('click');
-    $("input").unbind('keypress');
     $("input").not('.button').val('');
 }
 
 function registerLoad(){
-    var login = {
-        $form:$("#registerForm"),
-        $reBtn:$('#registerBtn'),
-        $pass:$("#registerForm").find("#pass"),
-        $username:$("#registerForm").find("#username"),
-        $repass:$("#registerForm").find('#repass'),
-        $email:$("#registerForm").find('input[type="email"]'),
-        $tel:$("#registerForm").find('input[type="tel"]'),
-        $warn:$("#registerForm").find('.alert'),
-        init:function(){
-            this.$reBtn.addClass('disabled');
-            this.validate = new FormValidator(this.$form);
-            this.bindEvent();
+    if(window.registerObj){
+        window.registerObj.renderPage();
+    }else{
+        window.registerObj = {
+            $form:$("#registerForm"),
+            $reBtn:$('#registerBtn'),
+            $pass:$("#registerForm").find("#pass"),
+            $username:$("#registerForm").find("#username"),
+            $repass:$("#registerForm").find('#repass'),
+            $email:$("#registerForm").find('input[type="email"]'),
+            $tel:$("#registerForm").find('input[type="tel"]'),
+            $warn:$("#registerForm").find('.alert'),
+            init:function(){
+                this.renderPage();
+                this.bindEvent();
+            },
+            renderPage:function(){
+                this.$reBtn.addClass('disabled');
+                this.validate = new FormValidator(this.$form);
+            },
+            bindEvent:function(){
+                var _this = this;
+                $("input").bind('keyup',function(){
+                    if(_this.validate.checkall() === true){
+                        _this.$warn.addClass('hide');
+                        _this.$reBtn.removeClass('disabled');
+                    }else{
+                        _this.$reBtn.addClass('disabled');
+                    }
+                });
 
-        },
-        bindEvent:function(){
-            var _this = this;
-            $("input").bind('keyup',function(){
-                if(_this.validate.checkall() === true){
-                    _this.$warn.addClass('hide');
-                    _this.$reBtn.removeClass('disabled');
-                }else{
-                    _this.$reBtn.addClass('disabled');
-                }
-            });
-
-            _this.$reBtn.bind("click",function(){
-                if(!_this.$reBtn.hasClass('disabled')){
+                _this.$reBtn.bind("click",function(){
+                    if(!_this.$reBtn.hasClass('disabled')){
                         _this.submitForm();
-                }
-            });
-        },
-        submitForm:function(){
-            var _this = this;
+                    }
+                });
+            },
+            submitForm:function(){
+                var _this = this;
                 COM.sendXHR(function(){
                     if(_this.checkForm()){
                         if(!BTN.isLoading(_this.$reBtn) || BTN.isLoading(_this.$reBtn) == 'false'){
@@ -102,37 +123,37 @@ function registerLoad(){
                         }
                     }
                 });
-        },
-        checkForm:function(){
-            if(this.$pass.val() != this.$repass.val()){
-                this.$pass.addClass('input-error').val('');
-                this.$repass.addClass('input-error').val('');
-                this.showWarn('两次密码输入不一致，请重新输入');
-                return false;
-            }
-            if(!this.validate.checkEmail(this.$email.val())){
-                this.showWarn('请输入正确的邮箱地址！',this.$email);
-                return false;
-            }
-            if(!this.validate.checkTel(this.$tel.val())){
-                this.showWarn('请输入正确的手机号码！',this.$tel);
-                return false;
-            }
-            return true;
-        },
-        showWarn:function(text,input){
-            this.$warn.removeClass('hide');
-            this.$warn.text(text);
-            if(input){
-                input.addClass('input-error');
+            },
+            checkForm:function(){
+                if(this.$pass.val() != this.$repass.val()){
+                    this.$pass.addClass('input-error').val('');
+                    this.$repass.addClass('input-error').val('');
+                    this.showWarn('两次密码输入不一致，请重新输入');
+                    return false;
+                }
+                if(!this.validate.checkEmail(this.$email.val())){
+                    this.showWarn('请输入正确的邮箱地址！',this.$email);
+                    return false;
+                }
+                if(!this.validate.checkTel(this.$tel.val())){
+                    this.showWarn('请输入正确的手机号码！',this.$tel);
+                    return false;
+                }
+                return true;
+            },
+            showWarn:function(text,input){
+                this.$warn.removeClass('hide');
+                this.$warn.text(text);
+                if(input){
+                    input.addClass('input-error');
+                }
             }
         }
+        window.registerObj.init();
     }
-    login.init();
+
 }
 
 function unregisterLoad(){
-    $('#registerBtn').unbind('click');
-    $("input").unbind('keyup');
     $("input").not('.button').val('');
 }

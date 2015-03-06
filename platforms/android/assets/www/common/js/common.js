@@ -1,28 +1,30 @@
 /*
-* author chenjiajun
-* date 2015/1/15
-* 此js 包含以下对象
-* 1.设置app framework 默认ui样式
-* 2.loginStorage请求用户信息时需要调用的接口
-* 3.注册网络监测，当连接网络和断开网络是需要调用的函数
-* 4.COM.sendXHR  请求封装，请求前检查网络是否连接
-  例如：
-     COM.sendXHR(function(){
-     $.post('http://'+XDJURL.$domainsName+'/login/index',data,function(res){
-     .....
-     },'json');
-     });
-* 5.重写window.alert函数 使用方式与原生方式相同
-* 6.重写window.confirm函数 使用方法有变化
-    例如：confirm("确定退出登录",function(){
-         })
-    实现  window.confirm = function(msg,done,cancel){...}
-    需要传递显示的信息 点击确定调用的函数
-* 7.showLoading（）加载旋转
-* 8.tip() 弹出小提示
-*
-* */
- var COM = {};//定义全局变量，为一些对象提供外部接口
+ * author chenjiajun
+ * date 2015/1/15
+ * 此js 包含以下对象
+ * 1.设置app framework 默认ui样式
+ * 2.loginStorage请求用户信息时需要调用的接口
+ * 3.注册网络监测，当连接网络和断开网络是需要调用的函数
+ * 4.COM.sendXHR  请求封装，请求前检查网络是否连接
+ 例如：
+ COM.sendXHR(function(){
+ $.ajax('http://'+XDJURL.$domainsName+'/login/index',data,function(res){
+ .....
+ },'json');
+ });
+ * 5.重写window.alert函数 使用方式与原生方式相同
+ * 6.重写window.confirm函数 使用方法有变化
+ 例如：confirm("确定退出登录",function(){
+ })
+ 实现  window.confirm = function(msg,done,cancel){...}
+ 需要传递显示的信息 点击确定调用的函数
+ * 7.showLoading（）加载旋转
+ * 8.tip() 弹出小提示
+ *
+ * */
+var COM = {
+    isOnline:true
+};//定义全局变量，为一些对象提供外部接口
 
 (function(){
     $(function(){
@@ -51,17 +53,20 @@
          * 登录模块、需要用户信息请求模块
          * 当请求需要用户信息时调用，此对象，此对象提供外部接口 COM.loginStorage
          * 使用方法：
-         * 1.var tocken = COM.loginStorage.checkTocken();//获取tocken
+         * 1.var token = COM.loginStorage.checkTocken();//获取tocken
          * 2.localStorage.currentPage = '#user';//设置当前pannel的ID,若跳转值登录页后可以跳转回来,若不提供则默认goback()
          * 3.退出账号，调用XDJ.loginStorage.exitLogin()函数
          * 4.进入登录页登录时，为登录按钮绑定 COM.loginStorage.submitLogin()函数
          * **/
-        var loginStorage = {
-            $tocken:localStorage.tocken,
+        COM.loginStorage = {
+            $token:localStorage.token,
             $username:localStorage.username,
             $password:localStorage.password,
+            localExpires:localStorage.localExpires,
+            key:localStorage.key,
             init:function(){
                 this.checkSuport();
+
             },
             checkSuport:function(){//检查是否支持本地存储
                 if(!window.localStorage){
@@ -69,15 +74,32 @@
                 }
             },
             checkTocken:function(){//检查tocken是否存在，当请求需要发送用户信息时需要调用此函数
-                if(this.$tocken && this.$tocken != 'undefined' && this.$tocken != ''){
-                    return this.$tocken;
-                }else if(this.$password && this.$username){
-                    this.login();
-              //  }else{
-                //    this.returnLoginPage();
+                if(this.$token && this.$token != 'undefined' && this.$token != ''){
+                    var date = (new Date()).getTime();
+                    console.log(date);
+                    if(this.localExpires && date > this.localExpires){
+                        this.checkUserInfo();
+                    }else{
+                        return {
+                            token:this.$token,
+                            key:this.key
+                        };
+                    }
                 }else{
-                    return false;
+                    this.checkUserInfo();
                 }
+            },
+            checkUserInfo:function(){
+                if(this.$password && this.$username){
+                    this.login();
+                }else{
+                    this.returnLoginPage();
+                }
+            },
+            getMd5Data:function(jsonString){
+                jsonString = jsonString ? jsonString : '';
+                var str = jsonString + this.$token + this.key;
+                return window.md5(str);
             },
             returnLoginPage:function(){//回到登录页面
                 $.ui.loadContent("#login", false, false, "up");
@@ -91,55 +113,75 @@
             },
             getRequestData:function(){//获得请求数据
                 return {
-                    name:this.$username,
-                    pass:this.$password
+                    username:this.$username,
+                    password:this.$password
+                   // device_data:this.getDeviceData()
+                }
+            },
+            getDeviceData:function(){
+                return {
+                    cordova:device.cordova,
+                    platform:device.platform,
+                    uuid:device.uuid,
+                    version:device.version
                 }
             },
             login:function(){
                 var _this = this;
-                var data = _this.getRequestData();
-                    COM.sendXHR(function(){
-                        var loginBtn  = $("#loginBtn");
-                        if(!loginBtn.hasClass('disabled')){
-                            if(!BTN.isLoading(loginBtn) || BTN.isLoading(loginBtn) == 'false'){
-                                BTN.addLoading(loginBtn,'登录中','loading');
-                                $.ajax({
-                                    type:"post",
-                                    dataType:'json',
-                                    success:function(res){
-                                        BTN.removeLoading(loginBtn,'登录');
-                                        if(res.code == 0){
-                                            if(res.data){
-                                                var tocken = res.msg;
-                                                if(tocken){
-                                                    //localStorage.tocken = tocken;
-                                                    //_this.$tocken = tocken;
-                                                    localStorage.tocken = tocken;
-                                                    _this.$tocken = tocken;
-                                                    localStorage.password = _this.password;
-                                                }
-                                                if(localStorage.currentPage){//需要在请求用户接口保存当页信息
-                                                    $.ui.loadContent(localStorage.currentPage, false, false, "up");
-                                                }else{
-                                                    $.ui.goBack();
-                                                }
+                var data = JSON.stringify(_this.getRequestData());
+                COM.sendXHR(function(){
+                    var loginBtn  = $("#loginBtn");
+                    if(!loginBtn.hasClass('disabled')){
+                        if(!BTN.isLoading(loginBtn) || BTN.isLoading(loginBtn) == 'false'){
+                            BTN.addLoading(loginBtn,'登录中','loading');
+                            $.ajax({
+                                type:"post",
+                                dataType:'json',
+                                contentType:"application/json",
+                                processData:false,
+                                url:AJAXURL.$loginUrl,
+                                data:data,
+                                success:function(res){
+                                    BTN.removeLoading(loginBtn,'登录');
+                                    if(res.code == 0){
+                                        var data = res.data;
+                                        if(data){
+                                            var token = data.token;
+                                            if(token){
+                                                //localStorage.token = token;
+                                                //_this.$token = token;
+                                                localStorage.token = token;
+                                                localStorage.key = data.key;//参数签名的key
+                                                localStorage.expires_in = data.expires_in;//记录失效时间
+                                                localStorage.expires = data.expires;//过期的服务器时间
+                                                localStorage.server_time = data.server_time;//服务器格林威治时间
+                                                _this.key = data.key;
+                                                _this.$token = token;
+                                                localStorage.password = _this.$password;
+                                                var date = (new Date).getTime();
+                                                localStorage.localExpires = date + data.expires_in;
+                                                _this.localExpires = date + data.expires_in;
                                             }
-                                        }else{
-                                            alert("用户名或密码错误");
-                                            _this.returnLoginPage();
+                                            if(localStorage.currentPage){//需要在请求用户接口保存当页信息
+                                                $.ui.loadContent(localStorage.currentPage, false, false, "up");
+                                            }else{
+                                                $.ui.goBack();
+                                            }
                                         }
-                                    },
-                                    url:XDJURL.$loginUrl,
-                                    data:data,
-                                    error:function(e){
-                                        BTN.removeLoading($("#loginBtn"),'登录');
-                                        alert("请求失败，请检查网络连接！");
+                                    }else{
+                                        alert("用户名或密码错误");
+                                        _this.returnLoginPage();
                                     }
-                                });
-                            }
+                                },
+                                error:function(e){
+                                    BTN.removeLoading($("#loginBtn"),'登录');
+                                    alert("请求失败，请检查网络连接！");
+                                }
+                            });
                         }
+                    }
 
-                    });
+                });
             },
             submitLogin:function(){
                 var username = $("#loginForm").find('#username').val();
@@ -154,17 +196,21 @@
                 var _this = this;
                 confirm("确定退出登录",function(){
                     _this.$password = null;
-                    _this.$tocken = null;
-                    localStorage.removeItem("tocken");
+                    _this.$token = null;
+                    localStorage.removeItem("token");
                     localStorage.removeItem("password");
+                    localStorage.removeItem("expires");
+                    localStorage.removeItem("expires_in");
+                    localStorage.removeItem("server_time");
+                    localStorage.removeItem("localExpires");
                     _this.returnLoginPage();
                 })
             }
         }
 
-        loginStorage.init();//页面加载时调用，检查是否支持本地存储
+        COM.loginStorage.init();//页面加载时调用，检查是否支持本地存储
 
-        COM.loginStorage = loginStorage;//COM.loginStorage是loginStorage的外部接口
+
 
 
         /**
@@ -172,7 +218,7 @@
          * **/
         COM.sendXHR=function(fun){
             if(COM.isOnline){
-              fun();
+                fun();
             }else{
                 alert("网络连接失败，请查看网络配置！");
             }
@@ -233,18 +279,29 @@
          * tip的样式在base.less
          * **/
         window.tip = function(text,timer){
-            var div  = $('<div class="COM-tip">'+text+'</div>');
-            $("body").append(div);
-            div.css({
-                "margin-left":-div.width()/2
+            var tipDiv = $(".com-tip");
+            tipDiv.css({//确保宽度计算正确，在左移前不被挤换行
+                left:'0'
             });
+            if(tipDiv.length <= 0){
+                var div  = $('<div class="com-tip">'+text+'</div>');
+                $("body").append(div);
+            }else{
+                tipDiv.text(text);
+            }
+
+            div.css({
+                "margin-left":-div.width()/2,
+                left:'50%'
+            });
+
             var time = timer || 2000;
             setTimeout(function(){
                 $(div).remove();
             },time);
         }
 
-         /**
+        /**
          * 重写window.alert函数
          * 此alert依赖af提供的插件af.popup.js
          * **/
@@ -279,6 +336,6 @@
         }
 
 
-     });
+    });
 
 })();
