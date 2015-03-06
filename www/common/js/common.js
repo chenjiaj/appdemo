@@ -53,17 +53,20 @@ var COM = {
          * 登录模块、需要用户信息请求模块
          * 当请求需要用户信息时调用，此对象，此对象提供外部接口 COM.loginStorage
          * 使用方法：
-         * 1.var tocken = COM.loginStorage.checkTocken();//获取tocken
+         * 1.var token = COM.loginStorage.checkTocken();//获取tocken
          * 2.localStorage.currentPage = '#user';//设置当前pannel的ID,若跳转值登录页后可以跳转回来,若不提供则默认goback()
          * 3.退出账号，调用XDJ.loginStorage.exitLogin()函数
          * 4.进入登录页登录时，为登录按钮绑定 COM.loginStorage.submitLogin()函数
          * **/
-        var loginStorage = {
-            $tocken:localStorage.tocken,
+        COM.loginStorage = {
+            $token:localStorage.token,
             $username:localStorage.username,
             $password:localStorage.password,
+            localExpires:localStorage.localExpires,
+            key:localStorage.key,
             init:function(){
                 this.checkSuport();
+
             },
             checkSuport:function(){//检查是否支持本地存储
                 if(!window.localStorage){
@@ -71,13 +74,32 @@ var COM = {
                 }
             },
             checkTocken:function(){//检查tocken是否存在，当请求需要发送用户信息时需要调用此函数
-                if(this.$tocken && this.$tocken != 'undefined' && this.$tocken != ''){
-                    return this.$tocken;
-                }else if(this.$password && this.$username){
+                if(this.$token && this.$token != 'undefined' && this.$token != ''){
+                    var date = (new Date()).getTime();
+                    console.log(date);
+                    if(this.localExpires && date > this.localExpires){
+                        this.checkUserInfo();
+                    }else{
+                        return {
+                            token:this.$token,
+                            key:this.key
+                        };
+                    }
+                }else{
+                    this.checkUserInfo();
+                }
+            },
+            checkUserInfo:function(){
+                if(this.$password && this.$username){
                     this.login();
                 }else{
                     this.returnLoginPage();
                 }
+            },
+            getMd5Data:function(jsonString){
+                jsonString = jsonString ? jsonString : '';
+                var str = jsonString + this.$token + this.key;
+                return window.md5(str);
             },
             returnLoginPage:function(){//回到登录页面
                 $.ui.loadContent("#login", false, false, "up");
@@ -91,13 +113,22 @@ var COM = {
             },
             getRequestData:function(){//获得请求数据
                 return {
-                    name:this.$username,
-                    pass:this.$password
+                    username:this.$username,
+                    password:this.$password
+                   // device_data:this.getDeviceData()
+                }
+            },
+            getDeviceData:function(){
+                return {
+                    cordova:device.cordova,
+                    platform:device.platform,
+                    uuid:device.uuid,
+                    version:device.version
                 }
             },
             login:function(){
                 var _this = this;
-                var data = _this.getRequestData();
+                var data = JSON.stringify(_this.getRequestData());
                 COM.sendXHR(function(){
                     var loginBtn  = $("#loginBtn");
                     if(!loginBtn.hasClass('disabled')){
@@ -106,17 +137,30 @@ var COM = {
                             $.ajax({
                                 type:"post",
                                 dataType:'json',
+                                contentType:"application/json",
+                                processData:false,
+                                url:AJAXURL.$loginUrl,
+                                data:data,
                                 success:function(res){
                                     BTN.removeLoading(loginBtn,'登录');
                                     if(res.code == 0){
-                                        if(res.data){
-                                            var tocken = res.msg;
-                                            if(tocken){
-                                                //localStorage.tocken = tocken;
-                                                //_this.$tocken = tocken;
-                                                localStorage.tocken = tocken;
-                                                _this.$tocken = tocken;
-                                                localStorage.password = _this.password;
+                                        var data = res.data;
+                                        if(data){
+                                            var token = data.token;
+                                            if(token){
+                                                //localStorage.token = token;
+                                                //_this.$token = token;
+                                                localStorage.token = token;
+                                                localStorage.key = data.key;//参数签名的key
+                                                localStorage.expires_in = data.expires_in;//记录失效时间
+                                                localStorage.expires = data.expires;//过期的服务器时间
+                                                localStorage.server_time = data.server_time;//服务器格林威治时间
+                                                _this.key = data.key;
+                                                _this.$token = token;
+                                                localStorage.password = _this.$password;
+                                                var date = (new Date).getTime();
+                                                localStorage.localExpires = date + data.expires_in;
+                                                _this.localExpires = date + data.expires_in;
                                             }
                                             if(localStorage.currentPage){//需要在请求用户接口保存当页信息
                                                 $.ui.loadContent(localStorage.currentPage, false, false, "up");
@@ -129,8 +173,6 @@ var COM = {
                                         _this.returnLoginPage();
                                     }
                                 },
-                                url:AJAXURL.$loginUrl,
-                                data:data,
                                 error:function(e){
                                     BTN.removeLoading($("#loginBtn"),'登录');
                                     alert("请求失败，请检查网络连接！");
@@ -154,17 +196,21 @@ var COM = {
                 var _this = this;
                 confirm("确定退出登录",function(){
                     _this.$password = null;
-                    _this.$tocken = null;
-                    localStorage.removeItem("tocken");
+                    _this.$token = null;
+                    localStorage.removeItem("token");
                     localStorage.removeItem("password");
+                    localStorage.removeItem("expires");
+                    localStorage.removeItem("expires_in");
+                    localStorage.removeItem("server_time");
+                    localStorage.removeItem("localExpires");
                     _this.returnLoginPage();
                 })
             }
         }
 
-        loginStorage.init();//页面加载时调用，检查是否支持本地存储
+        COM.loginStorage.init();//页面加载时调用，检查是否支持本地存储
 
-        COM.loginStorage = loginStorage;//COM.loginStorage是loginStorage的外部接口
+
 
 
         /**

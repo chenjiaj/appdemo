@@ -52,7 +52,6 @@ function homeLoad(){
                                 if(_this.pageIndex < _this.sumPage){
                                     _this.pageIndex ++;
                                     _this.renderData();
-
                                 }
                             }
                             self.clearInfinite();
@@ -64,7 +63,7 @@ function homeLoad(){
             renderData:function(){
                 var _this = this;
                 COM.sendXHR(function(){
-                    _this.isscroll = true;
+                    _this.isscroll = true;//写在里边为防止网络错误而不能删除
                     if(!_this.sendFist){
                         if(_this.$content.find(".refresh-div").length <=0){
                             _this.$info.html("<span class='animate-spin icon-spin5'></span>加载中...");
@@ -72,18 +71,26 @@ function homeLoad(){
                     }else{
                         $.ui.showMask('加载中...');
                     }
-                    _this.tocken = COM.loginStorage.checkTocken();
-                    if(_this.tocken){
+                    var md5 = COM.loginStorage.getMd5Data(JSON.stringify({id:_this.itemid}));
+                    var sendData = {
+                        id:_this.itemid,
+                        run:Math.random(),
+                        monitorId:_this.monitorId,
+                        page:_this.pageIndex
+                    } ;
+                    var info= COM.loginStorage.checkTocken();
+                    if(info){
+                        _this.token = info.token;
+                    }
+                    if(_this.token){
                         $.ajax({
                             type:'get',
                             dataType:'json',
-                            data:{
-                                id:_this.itemid,
-                                run:Math.random(),
-                                tocken: _this.tocken,
-                                monitorId:_this.monitorId,
-                                page:_this.pageIndex
+                            headers:{
+                                Token:_this.token,
+                                Md5:md5
                             },
+                            data:sendData,
                             url:AJAXURL.$ItemDetail,
                             success:function(res){
                                 _this.successCallBack(res);
@@ -98,6 +105,7 @@ function homeLoad(){
                                 }
                             },
                             error:function(e){
+                                var code = e.status;
                                 _this.$info.html("上拉加载新数据");
                                 if(_this.sendFist){
                                     $.ui.hideMask();
